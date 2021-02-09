@@ -1,5 +1,4 @@
 #!/bin/bash
 clear
-echo test
-
+echo testing
 sleep 10
