@@ -1,4 +1,4 @@
 #!/bin/bash
 clear
-echo testing
+echo "Feature under development."
 sleep 5
