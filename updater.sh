@@ -7,5 +7,6 @@ echo "Commands to be executed:"
 echo "1.sudo pacman-mirrors -aS stable. Important to avoid bluetooth problems and high cpu consumption on a core. Problem: Manjaro ARM update failed, “brcm-patchram-plus” and “pi-bluetooth” conflicting-https://forum.manjaro.org/t/manjaro-arm-update-failed-brcm-patchram-plus-and-pi-bluetooth-conflicting/42902"
 echo "2.sudo pacman-Syyu"
 sleep 15
-sudo pacman-mirrors -aS stable
+sudo pacman-mirrors -aS stable || echo "You are already using the stable branch."
+sudo pacman -Syyu
 sleep 5
