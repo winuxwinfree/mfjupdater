@@ -7,5 +7,5 @@ echo "1.sudo pacman-mirrors -aS stable. Important to avoid bluetooth problems an
 echo "2.sudo pacman-Syyu"
 sudo pacman-mirrors -aS stable || echo "You are already using the stable branch Or the command wasn't executed correctly."
 sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error"
-echo "Done"
-sleep 15
+echo "Done, you can close this window."
+sleep 99999
