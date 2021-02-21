@@ -1,8 +1,45 @@
 #!/bin/bash
+#AUTHOR: androrama
+#License GPLV3
+#Script inspired by Fenix Updater and Fenix Assistant 
 clear
 cd
 rm -f updater*
-sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command wasn't executed correctly."
-sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error"
-echo "Done, you can close this window."
-sleep 99999
+
+while :
+do
+	echo "   __     __)            __     __)                     
+  (, /|  /|    /)  ,    (, /   /        /)              
+    / | / |   //          /   /  __   _(/ _  _/_  _  __ 
+ ) /  |/  |_ /(_  /_     /   /   /_)_(_(_(_(_(___(/_/ (_
+(_/   '     /) .-/      (___(_.-/                       
+           (/ (_/            (_/ 
+---------------------------------------------------------"
+echo "PRESS THE NUMBER:"
+echo "1) To upgrade packages using the stable branch. "
+echo "2) To upgrade packages using the unstable branch 
+   (can break the system)."
+echo "3) To clean unused packages and cache 
+   (useful to clean the trash left by the previous options)."
+echo "___  ____ ___ ____ _  _ ____ ____ 
+|__] |__|  |  |    |__| |___ [__  
+|    |  |  |  |___ |  | |___ ___]   
+---------------------------------------------------------       "
+echo "PRESS THE LETTER:"
+echo "A) To reinstall tor-browser."
+echo ""
+echo -n "\033[5mSelect an option:\033[0m [1,2,3,A,q(EXIT)]=> "
+read opcion
+case $opcion in
+1) sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
+   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";;
+2) sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";;
+3) sudo pacman -Rns $(pacman -Qtdq) && paccache -r && sudo pacman -Scc;;
+4) install-tor;;
+q) echo "Done, closing.\n";
+   sleep 3; exit 1;;
+*) echo "$opc invalid option ";
+echo "Press a key to continue.";
+read foo;;
+esac
+done
