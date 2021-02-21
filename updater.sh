@@ -21,9 +21,9 @@ echo "2) To upgrade packages using the unstable branch
    (can break the system)."
 echo "3) To clean unused packages and cache 
    (useful to clean the trash left by the previous options)."
-echo "___  ____ ___ ____ _  _ ____ ____ 
-|__] |__|  |  |    |__| |___ [__  
-|    |  |  |  |___ |  | |___ ___]   and Add-ons
+echo " __                                                 
+|__)_ |_ _|_  _ _   _  _  _|   _  _| _| __  _  _  _ 
+|  (_||_(_| )(-_)  (_|| )(_|  (_|(_|(_|    (_)| )_) 
 ---------------------------------------------------------       "
 echo "PRESS THE LETTER:"
 echo "a) To repair tor-browser."
