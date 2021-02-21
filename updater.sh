@@ -28,16 +28,16 @@ echo "___  ____ ___ ____ _  _ ____ ____
 echo "PRESS THE LETTER:"
 echo "a) To reinstall tor-browser."
 echo ""
-echo -n "\033[5mSelect an option:\033[0m [1,2,3,A,q(EXIT)]=> "
+echo -n "Select an option:[1,2,3,A,q(EXIT)]=> "
 read opcion
 case $opcion in
 1) sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
    sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";;
 2) sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";;
-3) sudo pacman -Rns $(pacman -Qtdq) && paccache -r && sudo pacman -Scc;;
+3) sudo pacman -Scc & paccache -r & sudo pacman -Rns $(pacman -Qtdq);;
 
 a) install-tor;;
-q) echo "Done, closing.\n";
+q) echo "Done, closing.";
    sleep 3; exit 1;;
 *) echo "$opc invalid option ";
 echo "Press a key to continue.";
