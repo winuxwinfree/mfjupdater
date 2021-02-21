@@ -16,8 +16,8 @@ do
            (/ (_/            (_/ 
 ---------------------------------------------------------"
 echo "PRESS THE NUMBER:"
-echo "1) To upgrade packages using the stable branch. "
-echo "2) To upgrade packages using the unstable branch 
+echo "1) To upgrade monkafenixjaro using the stable branch. "
+echo "2) To upgrade monkafenixjaro using the unstable branch 
    (can break the system)."
 echo "3) To clean unused packages and cache 
    (useful to clean the trash left by the previous options)."
