@@ -51,6 +51,19 @@ c) pulseaudio --kill || echo "Error killing pulseaudio, maybe it's killed.";
    systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked.";
    systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked.";
    sudo pacman -S alsa-utils || echo "Error installing alsa-utils.";
+      echo " 
+
+ ____ ____ ____ ____ ____ ____ _________ ____ ____ ____ 
+||R |||e |||b |||o |||o |||t |||       |||t |||h |||e ||
+||__|||__|||__|||__|||__|||__|||_______|||__|||__|||__||
+|/__\|/__\|/__\|/__\|/__\|/__\|/_______\|/__\|/__\|/__\|
+ ____ ____ ____ ____ ____ ____ 
+||s |||y |||s |||t |||e |||m ||
+||__|||__|||__|||__|||__|||__||
+|/__\|/__\|/__\|/__\|/__\|/__\|
+
+
+                     ";
    echo "Once the patch has been applied, reboot and then right click on the volume icon, go to volume control options and change the command to open the mixer to alsamixer. This allows to open the advanced sound control panel by clicking on mixer options.";
    sleep 10;;
 q) echo "Done, closing.";
