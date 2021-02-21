@@ -26,7 +26,7 @@ echo "___  ____ ___ ____ _  _ ____ ____
 |    |  |  |  |___ |  | |___ ___]   
 ---------------------------------------------------------       "
 echo "PRESS THE LETTER:"
-echo "a) To reinstall tor-browser."
+echo "a) To repair tor-browser."
 echo ""
 echo -n "Select an option:[1,2,3,A,q(EXIT)]=> "
 read opcion
