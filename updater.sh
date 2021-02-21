@@ -26,7 +26,7 @@ echo "___  ____ ___ ____ _  _ ____ ____
 |    |  |  |  |___ |  | |___ ___]   
 ---------------------------------------------------------       "
 echo "PRESS THE LETTER:"
-echo "a) To repair tor-browser."
+echo "a) To repair tor-browser. b) Download Wine apps and games."
 echo ""
 echo -n "Select an option:[1,2,3,a,q(EXIT)]=> "
 read opcion
@@ -37,7 +37,8 @@ case $opcion in
 3) echo "
    Attention, please read the following warnings before proceeding:
    " & sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);;
-a) install-tor;;
+a) install-tor;
+b) sh download-update-wine-test-apps.sh;;
 q) echo "Done, closing.";
    sleep 3; exit 1;;
 *) echo "$opc invalid option ";
