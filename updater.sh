@@ -35,7 +35,7 @@ case $opcion in
    sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";;
 2) sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";;
 3) echo "
-   Attention, read the warnings before:
+   Attention, please read the following warnings before proceeding:
    " & sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);;
 a) install-tor;;
 q) echo "Done, closing.";
