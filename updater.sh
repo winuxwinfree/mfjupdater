@@ -23,12 +23,12 @@ echo "3) To clean unused packages and cache
    (useful to clean the trash left by the previous options)."
 echo "___  ____ ___ ____ _  _ ____ ____ 
 |__] |__|  |  |    |__| |___ [__  
-|    |  |  |  |___ |  | |___ ___]   
+|    |  |  |  |___ |  | |___ ___]   and Add-ons
 ---------------------------------------------------------       "
 echo "PRESS THE LETTER:"
-echo "a) To repair tor-browser. b) Download Wine apps and games."
+echo "a) To repair tor-browser. b) Download wine apps and games."
 echo ""
-echo -n "Select an option:[1,2,3,a,q(EXIT)]=> "
+echo -n "Select an option:[1,2,3,a,b,q(EXIT)]=> "
 read opcion
 case $opcion in
 1) sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
