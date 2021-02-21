@@ -28,7 +28,7 @@ echo "___  ____ ___ ____ _  _ ____ ____
 echo "PRESS THE LETTER:"
 echo "a) To repair tor-browser."
 echo ""
-echo -n "Select an option:[1,2,3,A,q(EXIT)]=> "
+echo -n "Select an option:[1,2,3,a,q(EXIT)]=> "
 read opcion
 case $opcion in
 1) sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
