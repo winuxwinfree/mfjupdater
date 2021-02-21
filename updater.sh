@@ -26,7 +26,7 @@ echo "___  ____ ___ ____ _  _ ____ ____
 |    |  |  |  |___ |  | |___ ___]   
 ---------------------------------------------------------       "
 echo "PRESS THE LETTER:"
-echo "A) To reinstall tor-browser."
+echo "a) To reinstall tor-browser."
 echo ""
 echo -n "\033[5mSelect an option:\033[0m [1,2,3,A,q(EXIT)]=> "
 read opcion
@@ -35,7 +35,8 @@ case $opcion in
    sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";;
 2) sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";;
 3) sudo pacman -Rns $(pacman -Qtdq) && paccache -r && sudo pacman -Scc;;
-4) install-tor;;
+
+a) install-tor;;
 q) echo "Done, closing.\n";
    sleep 3; exit 1;;
 *) echo "$opc invalid option ";
