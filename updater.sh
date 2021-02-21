@@ -28,12 +28,13 @@ echo "___  ____ ___ ____ _  _ ____ ____
 echo "PRESS THE LETTER:"
 echo "a) To repair tor-browser. b) Download wine apps and games."
 echo ""
-echo -n "Select an option:[1,2,3,a,b,q(EXIT)]=> "
+echo -n "Type an option:[1,2,3,a,b,q(EXIT)]=> "
 read opcion
 case $opcion in
 1) sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
    sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";;
-2) sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";;
+2) sudo pacman-mirrors -aS unstable || echo "You are already using the stable branch or the command can't be executed.";
+   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";;
 3) echo "
    Attention, please read the following warnings before proceeding:
    " & sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);;
