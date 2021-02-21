@@ -12,7 +12,7 @@ do
   (, /|  /|    /)  ,    (, /   /        /)              
     / | / |   //          /   /  __   _(/ _  _/_  _  __ 
  ) /  |/  |_ /(_  /_     /   /   /_)_(_(_(_(_(___(/_/ (_
-(_/   '     /) .-/      (___(_.-/                       
+(_/   '     /) .-/      (___(_.-/            beta           
            (/ (_/            (_/ 
 ---------------------------------------------------------"
 echo "PRESS THE NUMBER:"
@@ -28,19 +28,31 @@ echo " __
 echo "PRESS THE LETTER:"
 echo "a) To repair tor-browser."
 echo "b) Download wine apps and games."
+echo "c) Solve crackling, popping, and other sound problems."
 echo ""
-echo -n "Type an option:[1,2,3,a,b,q(EXIT)]=> "
+echo -n "Type an option:[1,2,3,a,b,c,q(EXIT)]=> "
 read opcion
 case $opcion in
 1) sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
-   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";;
+   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
+   sleep 10;;
 2) sudo pacman-mirrors -aS unstable || echo "You are already using the unstable branch or the command can't be executed.";
-   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";;
+   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
+   sleep 10;;
 3) echo "
    Attention, please read the following warnings before proceeding:
-   " & sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);;
-a) install-tor;;
-b) sh download-update_wine_test_apps.sh;;
+   " & sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);
+   sleep 10;;
+a) install-tor;
+   sleep 10;;
+b) sh download-update_wine_test_apps.sh;
+   sleep 10;;
+c) pulseaudio --kill || echo "Error killing pulseaudio, maybe it's killed.";
+   systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked.";
+   systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked.";
+   sudo pacman -S alsa-utils || echo "Error installing alsa-utils.";
+   echo "Done, now reboot and then right click on the volume icon, go to volume control options and change the command to open the mixer to alsamixer. This allows to open to open the advanced sound control panel by clicking on mixer options.";
+   sleep 10;;
 q) echo "Done, closing.";
    sleep 3; exit 1;;
 *) echo "$opc invalid option ";
