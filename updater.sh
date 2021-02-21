@@ -26,7 +26,8 @@ echo "___  ____ ___ ____ _  _ ____ ____
 |    |  |  |  |___ |  | |___ ___]   and Add-ons
 ---------------------------------------------------------       "
 echo "PRESS THE LETTER:"
-echo "a) To repair tor-browser. b) Download wine apps and games."
+echo "a) To repair tor-browser."
+echo "b) Download wine apps and games."
 echo ""
 echo -n "Type an option:[1,2,3,a,b,q(EXIT)]=> "
 read opcion
