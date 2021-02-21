@@ -37,7 +37,7 @@ case $opcion in
 3) echo "
    Attention, please read the following warnings before proceeding:
    " & sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);;
-a) install-tor;
+a) install-tor;;
 b) sh download-update-wine-test-apps.sh;;
 q) echo "Done, closing.";
    sleep 3; exit 1;;
