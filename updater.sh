@@ -64,7 +64,7 @@ c) pulseaudio --kill || echo "Error killing pulseaudio, maybe it's killed.";
 
 
                      ";
-   echo "Once the patch has been applied, reboot and then right click on the volume icon,go to volume control settings and change the command to open the mixer to alsamixer. This allows to open the advanced sound control panel by clicking on Launch Mixer. After this the equalizer and pulse-audio options will not work.";
+   echo "Once the patch has been applied, reboot and then right click on the volume icon,go to volume control settings and change the command to open the mixer to alsamixer. This allows to open the advanced sound control settings by clicking on Launch Mixer. After this the equalizer and pulse-audio options will not work.";
    sleep 30;;
 q) echo "Done, closing.";
    sleep 3; exit 1;;
