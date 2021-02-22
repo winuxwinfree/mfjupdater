@@ -4,7 +4,7 @@
 #Script inspired by Fenix Updater and Fenix Assistant 
 clear
 cd
-rm -f updater*
+rm -f updater.sh*
 
 while :
 do
