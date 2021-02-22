@@ -30,7 +30,7 @@ echo "a) To repair tor-browser."
 echo "b) Download wine apps and games."
 echo "c) Solve crackling, popping, and other sound problems."
 echo ""
-echo -n "[Type an option:1,2,3,a,b,c,q (EXIT) and press Intro]=> "
+echo -n "[Type an option: 1,2,3,a,b,c,q(EXIT) and press Intro]=> "
 read opcion
 case $opcion in
 1) sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
