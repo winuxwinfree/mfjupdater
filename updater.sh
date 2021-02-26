@@ -5,7 +5,7 @@
 clear
 cd
 rm -f updater.sh*
-
+cp /usr/share/applications/updater.desktop Desktop/ || echo "Error creating mfjupdater shortcut on desktop";
 while :
 do
 	echo "   __     __)            __     __)                     
