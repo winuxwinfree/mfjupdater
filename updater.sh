@@ -56,6 +56,7 @@ case $opcion in
 a) install-tor;
    sleep 10;;
 b) sh download-update_wine_test_apps.sh;
+   echo "Open it from wine explorer. Wine explorer path: My Documents/wineapps.";
    sleep 10;;
 c) echo "After this the equalizer and pulse-audio options will not work.";
    pulseaudio --kill || echo "Error killing pulseaudio, maybe it's killed.";
