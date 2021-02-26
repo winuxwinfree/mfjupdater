@@ -35,15 +35,17 @@ read opcion
 case $opcion in
 1) sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
    sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
-   sudo mkdir /usr/share/bin || echo "";
-   sudo mv /usr/bin/discord /usr/share/bin/ || echo "";
-   #temporal
-   sudo systemctl mask attach-bluetooth.service || echo "";
+   echo "Bluetooth service will be temporarily disabled due to an error.";
+   sudo systemctl mask attach-bluetooth.service;
+   sudo mkdir /usr/share/bin;
+   sudo mv /usr/bin/discord /usr/share/bin/ || echo "Discord is installed in the correct location or is missing.";
    sleep 10;;
 2) sudo pacman-mirrors -aS unstable || echo "You are already using the unstable branch or the command can't be executed.";
    sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
-   #temporal
-   sudo systemctl mask attach-bluetooth.service || echo "";
+   echo "Bluetooth service will be temporarily disabled due to an error.";
+   sudo systemctl mask attach-bluetooth.service;
+   sudo mkdir /usr/share/bin;
+   sudo mv /usr/bin/discord /usr/share/bin/ || echo "Discord is installed in the correct location or is missing.";
    sleep 10;;
 3) echo "
    Attention, please read the following warnings before proceeding:
