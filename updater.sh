@@ -37,6 +37,7 @@ case $opcion in
    sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
    echo "Bluetooth service will be temporarily disabled due to an error.";
    sudo systemctl mask attach-bluetooth.service;
+   sudo systemctl stop attach-bluetooth.service;
    sudo mkdir /usr/share/bin;
    sudo mv /usr/bin/discord /usr/share/bin/ || echo "Discord is installed in the correct location or is missing.";
    sleep 10;;
@@ -44,6 +45,7 @@ case $opcion in
    sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
    echo "Bluetooth service will be temporarily disabled due to an error.";
    sudo systemctl mask attach-bluetooth.service;
+   sudo systemctl stop attach-bluetooth.service;
    sudo mkdir /usr/share/bin;
    sudo mv /usr/bin/discord /usr/share/bin/ || echo "Discord is installed in the correct location or is missing.";
    sleep 10;;
