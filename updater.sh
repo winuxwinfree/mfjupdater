@@ -35,6 +35,8 @@ read opcion
 case $opcion in
 1) sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
    sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
+   sudo mkdir /usr/share/bin || echo "";
+   sudo mv /usr/bin/discord /usr/share/bin/ || echo "";
    sleep 10;;
 2) sudo pacman-mirrors -aS unstable || echo "You are already using the unstable branch or the command can't be executed.";
    sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
