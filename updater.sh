@@ -47,10 +47,13 @@ a) install-tor;
    sleep 10;;
 b) sh download-update_wine_test_apps.sh;
    sleep 10;;
-c) pulseaudio --kill || echo "Error killing pulseaudio, maybe it's killed.";
+c) echo "After this the equalizer and pulse-audio options will not work.";
+   pulseaudio --kill || echo "Error killing pulseaudio, maybe it's killed.";
    systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked.";
    systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked.";
    sudo pacman -S alsa-utils || echo "Error installing alsa-utils.";
+   sudo pacman -S qastools || echo "Error installing qastools.";
+   cp /usr/share/applications/qasmixer.desktop Desktop/ || echo "Error creating qasmixer shortcut on desktop";
       echo " 
 
  ____ ____ ____ ____ ____ ____ _________ ____ ____ ____ 
@@ -64,7 +67,7 @@ c) pulseaudio --kill || echo "Error killing pulseaudio, maybe it's killed.";
 
 
                      ";
-   echo "Once the patch has been applied, reboot and then right click on the volume icon,go to volume control settings and change the command to open the mixer to alsamixer. This allows to open the advanced sound control settings by clicking on Launch Mixer. After this the equalizer and pulse-audio options will not work.";
+   echo "Once the patch has been applied, reboot and then right click on the volume icon,go to volume control settings and change the command to open the mixer to alsamixer (you can also use this command in a terminal). This allows to open the advanced sound control settings by clicking on Launch Mixer.";
    sleep 30;;
 q) echo "Done, closing.";
    sleep 3; exit 1;;
