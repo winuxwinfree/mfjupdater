@@ -1,71 +1,48 @@
 #!/bin/bash
-#AUTHOR: androrama
+#AUTHOR: androrama, fenixlinux.com
 #License GPLV3
 #Script inspired by Fenix Updater and Fenix Assistant 
+
 clear
 cd
 rm -f updater.sh*
-cp /usr/share/applications/updater.desktop Desktop/ || echo "Error creating mfjupdater shortcut on desktop";
-while :
-do
-	echo "   __     __)            __     __)                     
-  (, /|  /|    /)  ,    (, /   /        /)              
-    / | / |   //          /   /  __   _(/ _  _/_  _  __ 
- ) /  |/  |_ /(_  /_     /   /   /_)_(_(_(_(_(___(/_/ (_
-(_/   '     /) .-/      (___(_.-/            beta           
-           (/ (_/            (_/ 
----------------------------------------------------------"
-echo "PRESS THE NUMBER:"
-echo "1) To upgrade monkafenixjaro using the stable branch. "
-echo "2) To upgrade monkafenixjaro using the unstable branch 
-   (can break the system)."
-echo "3) To clean unused packages and cache 
-   (useful to clean the trash left by the previous options)."
-echo " __                                                 
-|__)_ |_ _|_  _ _   _  _  _|   _  _| _| __  _  _  _ 
-|  (_||_(_| )(-_)  (_|| )(_|  (_|(_|(_|    (_)| )_) 
----------------------------------------------------------       "
-echo "PRESS THE LETTER:"
-echo "a) To repair tor-browser."
-echo "b) Download wine apps and games."
-echo "c) Solve crackling, popping, and other sound problems."
-echo ""
-echo -n "[Type an option: 1,2,3,a,b,c,q(EXIT) and then press INTRO]=> "
-read opcion
-case $opcion in
-1) sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
-   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
-   echo "Bluetooth service will be temporarily disabled due to an error.";
-   sudo systemctl mask attach-bluetooth.service;
-   sudo systemctl stop attach-bluetooth.service;
-   sudo mkdir /usr/share/bin;
-   sudo mv /usr/bin/discord /usr/share/bin/ || echo "Discord is installed in the correct location or is missing.";
-   sleep 10;;
-2) sudo pacman-mirrors -aS unstable || echo "You are already using the unstable branch or the command can't be executed.";
-   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
-   echo "Bluetooth service will be temporarily disabled due to an error.";
-   sudo systemctl mask attach-bluetooth.service;
-   sudo systemctl stop attach-bluetooth.service;
-   sudo mkdir /usr/share/bin;
-   sudo mv /usr/bin/discord /usr/share/bin/ || echo "Discord is installed in the correct location or is missing.";
-   sleep 10;;
-3) echo "
-   Attention, please read the following warnings before proceeding:
-   " & sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);
-   sleep 10;;
-a) install-tor;
-   sleep 10;;
-b) sh download-update_wine_test_apps.sh;
-   echo "Open it from wine explorer. Wine explorer path: My Documents/wineapps.";
-   sleep 10;;
-c) echo "After this the equalizer and pulse-audio options will not work.";
+
+patch () {
+   echo 
+   echo "Apply this patch if you have any of these problems:";
+   echo "1: Crackling, popping, and other sound problems.";
+   echo "   (After this the equalizer and pulse-audio options will not work.)";
+   echo "2: Bluetooth service does't work.";
+   echo "3: Discord does't work.";
+   echo 
+
+   while true; do
+       read -p "Run this patch? [y/n]: " yn
+       case $yn in
+           [Yy]* ) 
+
+
+echo "";
+echo "Step 1, install alsa.";
+read -p " Alsa sound is better, but pulseaduio equalzer will not work, continue? (y)]=> " answer 
+if [ $answer = y ] || [ $answer = Y ]; then
    pulseaudio --kill || echo "Error killing pulseaudio, maybe it's killed.";
    systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked.";
    systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked.";
-   sudo pacman -S alsa-utils || echo "Error installing alsa-utils.";
-   sudo pacman -S qastools || echo "Error installing qastools.";
-   cp /usr/share/applications/qasmixer.desktop Desktop/ || echo "Error creating qasmixer shortcut on desktop";
-      echo " 
+else
+  echo "Skipped step.";
+fi
+   sudo pacman -S alsa-utils || echo "Error installing alsa-utils, maybe it's already installed.";
+   sudo pacman -S qastools || echo "Error installing qastools, maybe it's already installed.";
+   cp /usr/share/applications/qasmixer.desktop Desktop/ || echo "Error creating qasmixer shortcut on desktop, maybe it's already created.";
+   sudo systemctl unmask attach-bluetooth.service;
+   sudo systemctl start attach-bluetooth.service;
+   sudo mkdir /usr/share/bin;
+   sudo mv /usr/bin/discord /usr/share/bin/ || echo "Discord is installed in the correct location or is missing.";
+   cp /usr/share/applications/updater.desktop Desktop/ || echo "Error creating mfjupdater shortcut on desktop, maybe it already exists.";
+   sed -i 's/kgdboc=ttyAMA0/kgdboc=serial0/g' cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline.";
+   sed -i 's/console=ttyAMA0/console=serial0/g' cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline.";
+   echo " 
 
  ____ ____ ____ ____ ____ ____ _________ ____ ____ ____ 
 ||R |||e |||b |||o |||o |||t |||       |||t |||h |||e ||
@@ -77,13 +54,116 @@ c) echo "After this the equalizer and pulse-audio options will not work.";
 |/__\|/__\|/__\|/__\|/__\|/__\|
 
 
-                     ";
+                        ";
    echo "Once the patch has been applied, reboot and then right click on the volume icon,go to volume control settings and change the command to open the mixer to alsamixer (you can also use this command in a terminal). This allows to open the advanced sound control settings by clicking on Launch Mixer.";
-   sleep 30;;
-q) echo "Done, closing.";
-   sleep 3; exit 1;;
-*) echo "$opc invalid option ";
+   sleep 10;
+   exit 1;;
+
+           [Nn]* ) exit;;
+           * ) echo "Please answer yes or no.";;
+       esac
+   done
+
+}
+
+
+while :
+  do
+
+
+	echo "   __     __)            __     __)                     
+  (, /|  /|    /)  ,    (, /   /        /)              
+    / | / |   //          /   /  __   _(/ _  _/_  _  __ 
+ ) /  |/  |_ /(_  /_...  /   /   /_)_(_(_(_(_(___(/_/ (_
+(_/   '     /) .-/      (___(_.-/            beta           
+           (/ (_/            (_/ 
+---------------------------------------------------------"
+echo "1) Upgrade the system. "
+echo "2) Clean unused packages and cache.
+   (useful to clean the trash left by the previous options)."
+
+
+echo " __                                                 
+|__)_ |_ _|_  _ _   _  _  _|   _  _| _| __  _  _  _ 
+|  (_||_(_| )(-_)  (_|| )(_|  (_|(_|(_|    (_)| )_) 
+---------------------------------------------------------       "
+echo "a) Repair the most common problems."
+echo "b) Reinstall tor-browser."
+echo "c) Download wine apps and games."
+echo "d) Pulseaudio/alsa(better sound) switcher."
+echo ""
+echo -n "[Type an option: 1,2,3,a,b,c,d,q(EXIT) and then press INTRO]=> "
+
+
+read opcion
+case $opcion in
+
+1)
+echo "";
+read -p "Which branch do you want to use? [s(stable)/u(unstable)]=> " answer
+if [ $answer = s ] || [ $answer = stable ]; then
+  echo "Upgrading monkafenixjaro using the stable branch";
+  sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
+  sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
+elif [ $answer = u ] || [ $answer = unstable ]; then
+  echo "Upgrading monkafenixjaro using the unstable branch";
+  sudo pacman-mirrors -aS unstable || echo "You are already using the unstable branch or the command can't be executed.";
+  sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
+else
+  echo "Invalid option.";
+fi
+
+sleep 5;;
+
+3)
+
+echo "
+Attention, please read the following warnings before proceeding:
+" & sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);
+sleep 5;;
+
+
+a) 
+
+patch;;
+
+
+b) 
+
+install-tor;
+   sleep 5;;
+
+c) 
+
+sh download-update_wine_test_apps.sh;
+echo "Open it from wine explorer. Wine explorer path: My Documents/wineapps.";
+sleep 10;;
+
+d) 
+echo "";
+read -p "Type (p) to use pulseaudio or (a) to use alsa=> " answer
+if [ $answer = p ] || [ $answer = pulseaudio ]; then
+  echo "Switching to pulseadio.";
+  systemctl --user unmask pulseaudio.service || echo "Error unmasking pulseaudio.service, maybe it's already unmasked.";
+  systemctl --user unmask pulseaudio.socket || echo "Error unmasking pulseaudio.socket, maybe it's already unmasked.";
+elif [ $answer = a ] || [ $answer = alsa ]; then
+  echo "Switching to alsa. The pulseadio equalizer will stop working.";
+  systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked.";
+  systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked.";
+fi
+
+sleep 5;;
+
+q) 
+
+echo "Done, closing. Not working properly? Ask fenixlinux.";
+sleep 3; exit 1;;
+
+*)
+
+echo "$opc invalid option ";
 echo "Press a key to continue.";
 read foo;;
-esac
+
+ esac
 done
