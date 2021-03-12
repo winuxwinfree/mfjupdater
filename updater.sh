@@ -105,10 +105,12 @@ if [ $answer = s ] || [ $answer = stable ]; then
   echo "Upgrading monkafenixjaro using the stable branch";
   sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
+  patch;
 elif [ $answer = u ] || [ $answer = unstable ]; then
   echo "Upgrading monkafenixjaro using the unstable branch";
   sudo pacman-mirrors -aS unstable || echo "You are already using the unstable branch or the command can't be executed.";
   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
+  patch;
 else
   echo "Invalid option.";
 fi
