@@ -75,12 +75,12 @@ while :
   (, /|  /|    /)  ,    (, /   /        /)              
     / | / |   //          /   /  __   _(/ _  _/_  _  __ 
  ) /  |/  |_ /(_  /_...  /   /   /_)_(_(_(_(_(___(/_/ (_
-(_/   '     /) .-/      (___(_.-/            beta           
+(_/   '     /) .-/      (___(_.-/   Cli version / Beta           
            (/ (_/            (_/ 
 ---------------------------------------------------------"
 echo "1) Upgrade the system. "
 echo "2) Clean unused packages and cache.
-   (useful to clean the trash left by the previous options)."
+   (useful to clean the trash left by the previous option)."
 
 
 echo " __                                                 
