@@ -75,7 +75,7 @@ patch () {
 
 
                         ";
-   sleep 3;
+   sleep 25;
    exit 1;;
 
            [Nn]* ) exit;;
