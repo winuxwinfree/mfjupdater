@@ -8,41 +8,60 @@ cd
 rm -f updater.sh*
 
 patch () {
-   echo 
-   echo "Apply this patch if you have any of these problems:";
-   echo "1: Crackling, popping, and other sound problems.";
-   echo "   (After this the equalizer and pulse-audio options will not work.)";
-   echo "2: Bluetooth service does't work.";
-   echo "3: Discord does't work.";
-   echo 
+  echo 
+  echo "Apply this patch if you have any of these problems:"
+  echo "1: Crackling, popping, and other sound problems."
+  echo "   (After this the equalizer and pulse-audio options will not work.)"
+  echo "2: Bluetooth service does't work."
+  echo "3: Discord does't work."
+  echo 
 
-   while true; do
-       read -p "Run this patch? [y/n]: " yn
-       case $yn in
-           [Yy]* ) 
+  while true; do
+    read -p "Run this patch? [y/n]: " yn
+  case $yn in
+    [Yy]* ) 
 
 
-echo "";
-echo "Step 1, install alsa.";
-read -p " Alsa sound is better, but pulseaduio equalzer will not work, continue? (y)]=> " answer 
-if [ $answer = y ] || [ $answer = Y ]; then
-   pulseaudio --kill || echo "Error killing pulseaudio, maybe it's killed.";
-   systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked.";
-   systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked.";
-else
-  echo "Skipped step.";
-fi
-   sudo pacman -S alsa-utils || echo "Error installing alsa-utils, maybe it's already installed.";
-   sudo pacman -S qastools || echo "Error installing qastools, maybe it's already installed.";
-   cp /usr/share/applications/qasmixer.desktop Desktop/ || echo "Error creating qasmixer shortcut on desktop, maybe it's already created.";
-   sudo systemctl unmask attach-bluetooth.service;
-   sudo systemctl start attach-bluetooth.service;
-   sudo mkdir /usr/share/bin;
-   sudo mv /usr/bin/discord /usr/share/bin/ || echo "Discord is installed in the correct location or is missing.";
+  echo ""
+  echo "Step 1, installing alsa."
+  read -p " Alsa sound is better, but pulseaduio equalzer will not work, continue? (y/n)]=> " answer 
+  if [ $answer = y ] || [ $answer = Y ]; then
+    pulseaudio --kill || echo "Error killing pulseaudio, maybe it's killed."
+    systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked."
+    systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked."
+    sudo pacman -S alsa-utils || echo "Error installing alsa-utils."
+    sudo pacman -S qastools || echo "Error installing qastools."
+  FILE=Desktop/qasmixer.desktop
+  if [ ! -f "$FILE" ]; then
+    cp /usr/share/applications/qasmixer.desktop Desktop/ || echo "Error creating qasmixer shortcut on desktop"
+  fi
+  echo "Reboot and then right click on the volume icon,go to volume control settings and change the command to open the mixer to alsamixer (you can also use this command in a terminal). This allows to open the advanced sound control settings by clicking on Launch Mixer."
+  sleep 5
+  else
+    echo "Unable to install alsa."
+  fi
+
+  echo "Step 2, repairing bluetooth problem.";
+  sudo systemctl unmask attach-bluetooth.service;
+  sudo systemctl start attach-bluetooth.service;
+  sed -i 's/kgdboc=ttyAMA0/kgdboc=serial0/g' cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline.";
+  sed -i 's/console=ttyAMA0/console=serial0/g' cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline.";
+
+  echo "Step 3, repairing discord.";
+  DIRECTORY=/usr/share/bin
+  if [ ! -d "$DIRECTORY" ]; then
+    sudo mkdir /usr/share/bin
+    sudo mv /usr/bin/discord /usr/share/bin/ || echo "Discord is installed in the correct location or is missing.";
+  else
+    echo "Discord patch skipped due to errors."
+  fi
+
+  FILE=Desktop/updater.desktop
+  if [ ! -f "$FILE" ]; then
    cp /usr/share/applications/updater.desktop Desktop/ || echo "Error creating mfjupdater shortcut on desktop, maybe it already exists.";
-   sed -i 's/kgdboc=ttyAMA0/kgdboc=serial0/g' cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline.";
-   sed -i 's/console=ttyAMA0/console=serial0/g' cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline.";
-   echo " 
+  fi
+  
+  echo " 
 
  ____ ____ ____ ____ ____ ____ _________ ____ ____ ____ 
 ||R |||e |||b |||o |||o |||t |||       |||t |||h |||e ||
@@ -55,8 +74,7 @@ fi
 
 
                         ";
-   echo "Once the patch has been applied, reboot and then right click on the volume icon,go to volume control settings and change the command to open the mixer to alsamixer (you can also use this command in a terminal). This allows to open the advanced sound control settings by clicking on Launch Mixer.";
-   sleep 10;
+   sleep 3;
    exit 1;;
 
            [Nn]* ) exit;;
@@ -102,22 +120,33 @@ case $opcion in
 echo "";
 read -p "Which branch do you want to use? [s(stable)/u(unstable)]=> " answer
 if [ $answer = s ] || [ $answer = stable ]; then
-  echo "Upgrading monkafenixjaro using the stable branch";
+  echo "Upgrading MFjaro using the stable branch";
   sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
+  echo ;
+  read -p "Clean unused packages and cache? (recomended to clean the trash left by the previous option). [y/n]=> " answer
+  if [ $answer = y ] || [ $answer = Y ]; then
+   echo  "Attention, please read the following warnings before proceeding:";
+   sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);
+  fi
   patch;
 elif [ $answer = u ] || [ $answer = unstable ]; then
-  echo "Upgrading monkafenixjaro using the unstable branch";
+  echo "Upgrading MFjaro using the unstable branch";
   sudo pacman-mirrors -aS unstable || echo "You are already using the unstable branch or the command can't be executed.";
   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
+  echo ;
+  read -p "Clean unused packages and cache? (recomended to clean the trash left by the previous option). [y/n]=> " answer
+  if [ $answer = y ] || [ $answer = Y ]; then
+   echo  "Attention, please read the following warnings before proceeding:";
+   sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);
+  fi
   patch;
 else
   echo "Invalid option.";
 fi
-
 sleep 5;;
 
-3)
+2)
 
 echo "
 Attention, please read the following warnings before proceeding:
