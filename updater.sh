@@ -51,6 +51,7 @@ patch () {
   DIRECTORY=/usr/share/bin
   if [ ! -d "$DIRECTORY" ]; then
     sudo mkdir /usr/share/bin
+  elif [ -d "$DIRECTORY" ]; then
     sudo mv /usr/bin/discord /usr/share/bin/ || echo "Discord is installed in the correct location or is missing.";
   else
     echo "Discord patch skipped due to errors."
