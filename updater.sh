@@ -188,7 +188,7 @@ sleep 5;;
 
 q) 
 
-echo "Done. Not working properly? Fenixlinux chat: https://discord.gg/dwAYC5QRDP.";
+echo "Done, closing. Not working properly? Fenixlinux chat: https://discord.gg/dwAYC5QRDP.";
 sleep 3; exit 1;;
 
 *)
