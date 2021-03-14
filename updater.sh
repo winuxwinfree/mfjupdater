@@ -24,7 +24,7 @@ patch () {
 
   echo ""
   echo "Step 1, installing alsa."
-  read -p " Alsa sound is better, but pulseaduio equalzer will not work, continue? (y/n)]=> " answer 
+  read -p " Alsa sound is better, but pulseaduio equalizer will not work, continue? (y/n)]=> " answer 
   if [ $answer = y ] || [ $answer = Y ]; then
     pulseaudio --kill || echo "Error killing pulseaudio, maybe it's killed."
     systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked."
