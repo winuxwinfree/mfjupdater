@@ -79,7 +79,7 @@ while :
            (/ (_/            (_/ 
 ---------------------------------------------------------"
 echo "1) Upgrade the system. "
-echo "2) Clean unused packages and cache.
+echo "2) Clean unused packages and cache
    (useful to clean the trash left by the previous option)."
 
 
