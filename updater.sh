@@ -167,6 +167,7 @@ if [ $answer = p ] || [ $answer = pulseaudio ]; then
   systemctl --user unmask pulseaudio.service || echo "Error unmasking pulseaudio.service, maybe it's already unmasked."
   systemctl --user unmask pulseaudio.socket || echo "Error unmasking pulseaudio.socket, maybe it's already unmasked."
   echo "Reboot the system to apply the changes."
+  sleep 20
 elif [ $answer = a ] || [ $answer = alsa ]; then
   echo "Switching to alsa. The pulseadio equalizer will stop working."
   pkill pulseaudio
