@@ -205,7 +205,7 @@ patch;;
 
 b) 
 
-tor;
+tor;;
 
 c) 
 
