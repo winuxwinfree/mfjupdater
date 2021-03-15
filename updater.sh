@@ -9,7 +9,7 @@ rm -f updater.sh*
 
 patch () {
   echo 
-  echo "Apply this patch if you have any the following problems:"
+  echo "Apply this patch if you have any of the following problems:"
   echo "1: Crackling, popping, and other sound problems."
   echo "   (After this the equalizer and pulse-audio options will not work)."
   echo "2: Bluetooth service does't work."
