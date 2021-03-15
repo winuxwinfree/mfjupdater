@@ -130,6 +130,44 @@ patch () {
 
 }
 
+#Download wine apps and games function.
+
+wineapps () {
+
+if [ -d "./wineapps" ] 
+then
+    cd wineapps
+    git pull
+else
+    git clone https://github.com/winuxwinfree/wineapps
+    
+fi
+echo "Open it from wine explorer. Wine explorer path: My Documents/wineapps."
+sleep 10
+}
+
+#Pulseaudio/alsa(better sound) switcher function.
+
+audiofix () {
+
+echo "";
+read -p "Type (p) to use pulseaudio or (a) to use alsa=> " answer
+if [ $answer = p ] || [ $answer = pulseaudio ]; then
+  echo "Switching to pulseadio.";
+  systemctl --user unmask pulseaudio.service || echo "Error unmasking pulseaudio.service, maybe it's already unmasked.";
+  systemctl --user unmask pulseaudio.socket || echo "Error unmasking pulseaudio.socket, maybe it's already unmasked.";
+elif [ $answer = a ] || [ $answer = alsa ]; then
+  echo "Switching to alsa. The pulseadio equalizer will stop working.";
+  systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked.";
+  systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked.";
+  echo -e "If you switched pulse to alsa follow the steps below to configure it correctly: \n 1. Right click on the volume icon. \n 2. Go to volume control settings. \n 3. Where it says -Command to open the mixer- type -alsamixer-. \n (you can also use this command in a terminal). \n Now you can open the advanced sound control settings \n by clicking on -Launch Mixer-.";
+  sleep 999;
+fi
+
+sleep 5;;
+}
+
+
 #Fenix Updater -cli version- main menu.
 
 while :
@@ -163,6 +201,7 @@ read opcion
 case $opcion in
 
 1)
+
 echo "";
 read -p "Which branch do you want to use? [s(stable)/u(unstable)]=> " answer
 if [ $answer = s ] || [ $answer = stable ]; then
@@ -209,27 +248,11 @@ tor;;
 
 c) 
 
-sh download-update_wine_test_apps.sh;
-echo "Open it from wine explorer. Wine explorer path: My Documents/wineapps.";
-sleep 10;;
+wineapps;;
 
 d)
 
-echo "";
-read -p "Type (p) to use pulseaudio or (a) to use alsa=> " answer
-if [ $answer = p ] || [ $answer = pulseaudio ]; then
-  echo "Switching to pulseadio.";
-  systemctl --user unmask pulseaudio.service || echo "Error unmasking pulseaudio.service, maybe it's already unmasked.";
-  systemctl --user unmask pulseaudio.socket || echo "Error unmasking pulseaudio.socket, maybe it's already unmasked.";
-elif [ $answer = a ] || [ $answer = alsa ]; then
-  echo "Switching to alsa. The pulseadio equalizer will stop working.";
-  systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked.";
-  systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked.";
-  echo -e "If you switched pulse to alsa follow the steps below to configure it correctly: \n 1. Right click on the volume icon. \n 2. Go to volume control settings. \n 3. Where it says -Command to open the mixer- type -alsamixer-. \n (you can also use this command in a terminal). \n Now you can open the advanced sound control settings \n by clicking on -Launch Mixer-.";
-  sleep 999;
-fi
-
-sleep 5;;
+audiofix;;
 
 q) 
 
