@@ -49,10 +49,11 @@ patch () {
 
   echo "Step 3, repairing discord.";
   DIRECTORY=/usr/share/bin
+  FILE=/usr/bin/discord
   if [ ! -d "$DIRECTORY" ]; then
     sudo mkdir /usr/share/bin
-  elif [ -d "$DIRECTORY" ]; then
-    sudo mv /usr/bin/discord /usr/share/bin/ || echo "Discord is installed in the correct location or is missing.";
+  elif [[ -d "$DIRECTORY" && -f "$FILE" ]]; then 
+    sudo mv /usr/bin/discord /usr/share/bin/ || echo "Error installing Discord.";
   else
     echo "Discord patch skipped due to errors."
   fi
