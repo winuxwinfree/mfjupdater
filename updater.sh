@@ -188,11 +188,11 @@ fi
 #Recommended software function.
 
 addapps () {
-echo 
-if [ ! /usr/bin/anbox ]; then
-  echo "Install anbox (Android In a Box) ? ."
-  echo "Anbox may reduce system performance, you can uninstall it by running this wizard again."
-  read -p " Continue? (y/n)]=> " answer 
+echo
+if [ ! -f /usr/bin/anbox ]; then
+  echo "Install anbox (Android In a Box)?"
+  echo -e "\nAnbox may reduce system performance. \nYou can uninstall it by running this wizard again.\n"
+  read -p "Continue? (y/n)]=> " answer 
 if [ $answer = y ] || [ $answer = Y ]; then
   sudo pacman -S anbox-image-aarch64 || echo "Error installing anbox."
 fi
@@ -202,7 +202,6 @@ if [ $answer = y ] || [ $answer = Y ]; then
   sudo pacman -R anbox
 fi
 fi
-
 }
 
 #Fenix Updater -cli version- main menu.
