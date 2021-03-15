@@ -202,7 +202,9 @@ if [ $answer = y ] || [ $answer = Y ]; then
   sudo pacman -R anbox
 fi
 fi
-  
+
+}
+
 #Fenix Updater -cli version- main menu.
 
 while :
