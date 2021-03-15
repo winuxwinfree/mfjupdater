@@ -35,8 +35,6 @@ patch () {
   if [ ! -f "$FILE" ]; then
     cp /usr/share/applications/qasmixer.desktop Desktop/ || echo "Error creating qasmixer shortcut on desktop"
   fi
-  echo "Reboot and then right click on the volume icon,go to volume control settings and change the command to open the mixer to alsamixer (you can also use this command in a terminal). This allows to open the advanced sound control settings by clicking on Launch Mixer."
-  sleep 5
   else
     echo "Unable to install alsa."
   fi
@@ -44,8 +42,8 @@ patch () {
   echo "Step 2, repairing bluetooth problem.";
   sudo systemctl unmask attach-bluetooth.service;
   sudo systemctl start attach-bluetooth.service;
-  sed -i 's/kgdboc=ttyAMA0/kgdboc=serial0/g' cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline.";
-  sed -i 's/console=ttyAMA0/console=serial0/g' cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline.";
+  sed -i 's/kgdboc=ttyAMA0/kgdboc=serial0/g' /boot/cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline.";
+  sed -i 's/console=ttyAMA0/console=serial0/g' /boot/cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline.";
 
   echo "Step 3, repairing discord.";
   DIRECTORY=/usr/share/bin
@@ -75,7 +73,14 @@ patch () {
 
 
                         ";
-   sleep 25;
+   echo "If you switched pulse to alsa follow the steps below to configure it correctly:
+   1. Right click on the volume icon.
+   2. Go to volume control settings.
+   3. Where it says -Command to open the mixer- type -alsamixer-. 
+      (you can also use this command in a terminal). 
+   This will open the advanced sound control settings 
+   by clicking on -Launch Mixer-."
+   sleep 999;
    exit 1;;
 
            [Nn]* ) exit;;
@@ -111,7 +116,7 @@ echo "b) Reinstall tor-browser."
 echo "c) Download wine apps and games."
 echo "d) Pulseaudio/alsa(better sound) switcher."
 echo ""
-echo -n "[Type an option: 1,2,3,a,b,c,d,q(EXIT) and then press INTRO]=> "
+echo -n "[Type an option: 1,2,3,a,b,c,d and then press INTRO]=> "
 
 
 read opcion
