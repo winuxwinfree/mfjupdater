@@ -82,7 +82,7 @@ patch () {
       (you can also use this command in a terminal). 
    Now you can open the advanced sound control settings 
    by clicking on -Launch Mixer-."
-   sleep 999;
+   sleep 20;
    exit 1;;
 
            [Nn]* ) exit;;
