@@ -72,6 +72,7 @@ patch () {
    cp /usr/share/applications/updater.desktop $HOME/Desktop/ || echo "Error creating mfjupdater shortcut on desktop, maybe it already exists.";
   fi
   
+  
   #xp alsa boot sound fix
   
   echo "@cvlc --play-and-exit /home/pi/xp.ogg" >> $HOME/.config/lxsession/LXDE/autostart 
@@ -185,7 +186,7 @@ fi
 
 }
 
-#Recommended software function.
+#Add software function.
 
 addapps () {
 echo
@@ -199,6 +200,7 @@ fi
 else
   read -p "Uninstall anbox? (y/n)]=> " answer 
 if [ $answer = y ] || [ $answer = Y ]; then
+  sudo pacman -R anbox-image-aarch64
   sudo pacman -R anbox
 fi
 fi
@@ -229,7 +231,7 @@ echo "a) Repair the most common problems."
 echo "b) Reinstall tor-browser."
 echo "c) Download wine apps and games."
 echo "d) Pulseaudio/alsa(better sound) switcher."
-echo "e) Install recommended software."
+echo "e) Add/Remove Mfjaro Software."
 echo ""
 echo -n "[Type an option: 1,2,3,a,b,c,d,e and then press INTRO]=> "
 
@@ -240,29 +242,46 @@ case $opcion in
 1)
 
 echo "";
+
 read -p "Which branch do you want to use? [s(stable)/u(unstable)]=> " answer
 if [ $answer = s ] || [ $answer = stable ]; then
   echo "Upgrading MFjaro using the stable branch";
   sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
+  
   echo ;
   read -p "Clean unused packages and cache? (recommended to free up space after upgrade). [y/n]=> " answer
   if [ $answer = y ] || [ $answer = Y ]; then
    echo  "Attention, please read the following warnings before proceeding:";
    sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);
   fi
-  patch;
+  
+ patch;
+  
+ read -p "Run the Add-On Wizard? [y/n]=> " answer
+  if [ $answer = y ] || [ $answer = Y ]; then
+   addapps;
+  fi
+  
 elif [ $answer = u ] || [ $answer = unstable ]; then
   echo "Upgrading MFjaro using the unstable branch";
   sudo pacman-mirrors -aS unstable || echo "You are already using the unstable branch or the command can't be executed.";
   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
+  
   echo ;
   read -p "Clean unused packages and cache? (recommended to free up space after upgrade.). [y/n]=> " answer
   if [ $answer = y ] || [ $answer = Y ]; then
    echo  "Attention, please read the following warnings before proceeding:";
    sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);
   fi
+  
   patch;
+  
+ read -p "Run the Add-On Wizard? [y/n]=> " answer
+  if [ $answer = y ] || [ $answer = Y ]; then
+   addapps;
+  fi
+  
 else
   echo "Invalid option.";
 fi
