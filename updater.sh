@@ -11,7 +11,7 @@ patch () {
   echo 
   echo "Apply this patch if you have any of these problems:"
   echo "1: Crackling, popping, and other sound problems."
-  echo "   (After this the equalizer and pulse-audio options will not work.)"
+  echo "   (After this the equalizer and pulse-audio options will not work)."
   echo "2: Bluetooth service does't work."
   echo "3: Discord does't work."
   echo 
