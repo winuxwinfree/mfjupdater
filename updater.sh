@@ -249,6 +249,7 @@ if [ $answer = s ] || [ $answer = stable ]; then
   sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
   
+  echo
   read -p "Run the Add-On Wizard? [y/n]=> " answer
   if [ $answer = y ] || [ $answer = Y ]; then
    addapps;
@@ -268,6 +269,7 @@ elif [ $answer = u ] || [ $answer = unstable ]; then
   sudo pacman-mirrors -aS unstable || echo "You are already using the unstable branch or the command can't be executed.";
   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
   
+  echo
   read -p "Run the Add-On Wizard? [y/n]=> " answer
   if [ $answer = y ] || [ $answer = Y ]; then
    addapps;
