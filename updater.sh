@@ -7,6 +7,8 @@ clear
 cd
 rm -f updater.sh*
 
+#MFjaro patch function.
+
 patch () {
   echo 
   echo "Apply this patch if you have any of the following problems:"
@@ -90,6 +92,45 @@ patch () {
 
 }
 
+ #Install Tor-Browser function / Thanks to botspot.
+
+ tor () {
+
+ cd
+ DIRECTORY="$(dirname "$(dirname "$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )")")"
+
+ function error {
+   echo -e "\\e[91m$1\\e[39m"
+   exit 1
+ }
+
+ rm -r ~/tor-browser_en-US 
+ rm ~/tor.tar.xz
+ rm ~/.local/share/applications/tor.desktop
+
+ wget https://sourceforge.net/projects/tor-browser-ports/files/10.0.11-arm64/tor-browser-linux-arm64-10.0.11_en-US.tar.xz/download -O tor.tar.xz || error "Failed to download!"
+
+ tar -xf ~/tor.tar.xz || error "Failed to extract!"
+
+ echo "[Desktop Entry]
+ Type=Application
+ Name=Tor Browser
+ GenericName=Web Browser
+ Comment=Tor Browser is +1 for privacy and −1 for mass surveillance
+ Categories=Network;WebBrowser;Security;
+ Exec=$HOME/tor-browser_en-US/Browser/start-tor-browser
+ X-TorBrowser-ExecShell=./Browser/start-tor-browser --detach
+ Icon=/usr/share/icons/tor.png
+ StartupWMClass=Tor Browser" > ~/.local/share/applications/tor.desktop
+
+ rm /home/pi/.local/share/applications/torinstall.desktop
+
+ echo Done
+ sleep 10
+
+}
+
+#Fenix Updater main menu.
 
 while :
   do
@@ -158,16 +199,13 @@ Attention, please read the following warnings before proceeding:
 " & sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);
 sleep 5;;
 
-
 a) 
 
 patch;;
 
-
 b) 
 
-install-tor;
-   sleep 5;;
+tor;
 
 c) 
 
