@@ -185,6 +185,24 @@ fi
 
 }
 
+#Recommended software function.
+
+addapps () {
+
+if [ ! /usr/bin/anbox ]; then
+  echo "Install anbox (Android In a Box) ? ."
+  echo "Anbox may reduce system performance, you can uninstall it by running this wizard again."
+  read -p " Continue? (y/n)]=> " answer 
+if [ $answer = y ] || [ $answer = Y ]; then
+  sudo pacman -S anbox-image-aarch64 || echo "Error installing anbox."
+fi
+else
+  read -p "Uninstall anbox? (y/n)]=> " answer 
+if [ $answer = y ] || [ $answer = Y ]; then
+  sudo pacman -R anbox
+fi
+fi
+  
 #Fenix Updater -cli version- main menu.
 
 while :
@@ -210,8 +228,9 @@ echo "a) Repair the most common problems."
 echo "b) Reinstall tor-browser."
 echo "c) Download wine apps and games."
 echo "d) Pulseaudio/alsa(better sound) switcher."
+echo "e) Install recommended software."
 echo ""
-echo -n "[Type an option: 1,2,3,a,b,c,d and then press INTRO]=> "
+echo -n "[Type an option: 1,2,3,a,b,c,d,e and then press INTRO]=> "
 
 
 read opcion
@@ -270,6 +289,10 @@ wineapps;;
 d)
 
 audiofix;;
+
+e)
+
+addapps;;
 
 q) 
 
