@@ -170,7 +170,7 @@ if [ $answer = s ] || [ $answer = stable ]; then
   sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
   echo ;
-  read -p "Clean unused packages and cache? (recommended to free up space after upgrade.). [y/n]=> " answer
+  read -p "Clean unused packages and cache? (recommended to free up space after upgrade). [y/n]=> " answer
   if [ $answer = y ] || [ $answer = Y ]; then
    echo  "Attention, please read the following warnings before proceeding:";
    sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);
