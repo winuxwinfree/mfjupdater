@@ -25,6 +25,9 @@ patch () {
 
 
   echo ""
+  
+  #alsa audio fix
+  
   echo "Step 1, installing alsa."
   read -p " Alsa sound is better, but pulseaduio equalizer will not work, continue? (y/n)]=> " answer 
   if [ $answer = y ] || [ $answer = Y ]; then
@@ -40,20 +43,26 @@ patch () {
   else
     echo "Unable to install alsa."
   fi
-
+  
+  #bluetooth fix
+  
   echo "Step 2, repairing bluetooth problem.";
   sudo systemctl unmask attach-bluetooth.service;
   sudo systemctl start attach-bluetooth.service;
-  sudo sed -i 's/kgdboc=ttyAMA0/kgdboc=serial0/g' /boot/cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline.";
-  sudo sed -i 's/console=ttyAMA0/console=serial0/g' /boot/cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline.";
-
+  sudo sed -i 's/kgdboc=ttyAMA0/kgdboc=serial0/g' /boot/cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline."
+  sudo sed -i 's/console=ttyAMA0/console=serial0/g' /boot/cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline."
+  echo "Done."
+  
+  #discord fix
+  
   echo "Step 3, repairing discord.";
   DIRECTORY=/usr/share/bin
   FILE=/usr/bin/discord
   if [ ! -d "$DIRECTORY" ]; then
     sudo mkdir /usr/share/bin
   elif [[ -d "$DIRECTORY" && -f "$FILE" ]]; then 
-    sudo mv /usr/bin/discord /usr/share/bin/ || echo "Error installing Discord.";
+    sudo mv /usr/bin/discord /usr/share/bin/ || echo "Error installing Discord."
+    echo "Done."
   else
     echo "Discord patch skipped due to errors."
   fi
