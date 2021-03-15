@@ -153,17 +153,17 @@ audiofix () {
 echo "";
 read -p "Type (p) to use pulseaudio or (a) to use alsa=> " answer
 if [ $answer = p ] || [ $answer = pulseaudio ]; then
-  echo "Switching to pulseadio.";
-  systemctl --user unmask pulseaudio.service || echo "Error unmasking pulseaudio.service, maybe it's already unmasked.";
-  systemctl --user unmask pulseaudio.socket || echo "Error unmasking pulseaudio.socket, maybe it's already unmasked.";
+  echo "Switching to pulseadio."
+  systemctl --user unmask pulseaudio.service || echo "Error unmasking pulseaudio.service, maybe it's already unmasked."
+  systemctl --user unmask pulseaudio.socket || echo "Error unmasking pulseaudio.socket, maybe it's already unmasked."
 elif [ $answer = a ] || [ $answer = alsa ]; then
   echo "Switching to alsa. The pulseadio equalizer will stop working.";
-  systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked.";
-  systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked.";
-  echo -e "If you switched pulse to alsa follow the steps below to configure it correctly: \n 1. Right click on the volume icon. \n 2. Go to volume control settings. \n 3. Where it says -Command to open the mixer- type -alsamixer-. \n (you can also use this command in a terminal). \n Now you can open the advanced sound control settings \n by clicking on -Launch Mixer-.";
+  systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked."
+  systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked."
+  echo -e "If you switched pulse to alsa follow the steps below to configure it correctly: \n 1. Right click on the volume icon. \n 2. Go to volume control settings. \n 3. Where it says -Command to open the mixer- type -alsamixer-. \n (you can also use this command in a terminal). \n Now you can open the advanced sound control settings \n by clicking on -Launch Mixer-."
 fi
 
-sleep 999;;
+sleep 999
 
 }
 
