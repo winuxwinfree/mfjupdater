@@ -97,7 +97,7 @@ patch () {
       (you can also use this command in a terminal). 
    Now you can open the advanced sound control settings 
    by clicking on -Launch Mixer-."
-   sleep 20;
+   sleep 999;
    exit 1;;
 
            [Nn]* ) exit;;
@@ -233,7 +233,7 @@ echo "c) Download wine apps and games."
 echo "d) Pulseaudio/alsa(better sound) switcher."
 echo "e) Add-ons."
 echo ""
-echo -n "[Type an option: 1,2,3,a,b,c,d,e and then press INTRO]=> "
+echo -n "[Type an option: 1,2,a,b,c,d,e and then press INTRO]=> "
 
 
 read opcion
