@@ -130,7 +130,7 @@ patch () {
 
 }
 
-#Fenix Updater main menu.
+#Fenix Updater -cli version- main menu.
 
 while :
   do
