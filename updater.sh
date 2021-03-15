@@ -188,7 +188,7 @@ fi
 #Recommended software function.
 
 addapps () {
-
+echo 
 if [ ! /usr/bin/anbox ]; then
   echo "Install anbox (Android In a Box) ? ."
   echo "Anbox may reduce system performance, you can uninstall it by running this wizard again."
