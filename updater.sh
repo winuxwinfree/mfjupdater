@@ -249,6 +249,11 @@ if [ $answer = s ] || [ $answer = stable ]; then
   sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
   
+  read -p "Run the Add-On Wizard? [y/n]=> " answer
+  if [ $answer = y ] || [ $answer = Y ]; then
+   addapps;
+  fi
+  
   echo ;
   read -p "Clean unused packages and cache? (recommended to free up space after upgrade). [y/n]=> " answer
   if [ $answer = y ] || [ $answer = Y ]; then
@@ -258,15 +263,15 @@ if [ $answer = s ] || [ $answer = stable ]; then
   
  patch;
   
- read -p "Run the Add-On Wizard? [y/n]=> " answer
-  if [ $answer = y ] || [ $answer = Y ]; then
-   addapps;
-  fi
-  
 elif [ $answer = u ] || [ $answer = unstable ]; then
   echo "Upgrading MFjaro using the unstable branch";
   sudo pacman-mirrors -aS unstable || echo "You are already using the unstable branch or the command can't be executed.";
   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
+  
+  read -p "Run the Add-On Wizard? [y/n]=> " answer
+  if [ $answer = y ] || [ $answer = Y ]; then
+   addapps;
+  fi
   
   echo ;
   read -p "Clean unused packages and cache? (recommended to free up space after upgrade.). [y/n]=> " answer
@@ -276,11 +281,6 @@ elif [ $answer = u ] || [ $answer = unstable ]; then
   fi
   
   patch;
-  
- read -p "Run the Add-On Wizard? [y/n]=> " answer
-  if [ $answer = y ] || [ $answer = Y ]; then
-   addapps;
-  fi
   
 else
   echo "Invalid option.";
