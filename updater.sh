@@ -35,7 +35,7 @@ patch () {
     sudo pacman -S qastools || echo "Error installing qastools."
   FILE=Desktop/qasmixer.desktop
   if [ ! -f "$FILE" ]; then
-    cp /usr/share/applications/qasmixer.desktop Desktop/ || echo "Error creating qasmixer shortcut on desktop"
+    cp /usr/share/applications/qasmixer.desktop $HOME/Desktop/ || echo "Error creating qasmixer shortcut on desktop"
   fi
   else
     echo "Unable to install alsa."
@@ -59,7 +59,7 @@ patch () {
 
   FILE=Desktop/updater.desktop
   if [ ! -f "$FILE" ]; then
-   cp /usr/share/applications/updater.desktop Desktop/ || echo "Error creating mfjupdater shortcut on desktop, maybe it already exists.";
+   cp /usr/share/applications/updater.desktop $HOME/Desktop/ || echo "Error creating mfjupdater shortcut on desktop, maybe it already exists.";
   fi
   
   echo " 
