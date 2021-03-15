@@ -231,7 +231,7 @@ echo "a) Repair the most common problems."
 echo "b) Reinstall tor-browser."
 echo "c) Download wine apps and games."
 echo "d) Pulseaudio/alsa(better sound) switcher."
-echo "e) Add/Remove Mfjaro Software."
+echo "e) Add-ons."
 echo ""
 echo -n "[Type an option: 1,2,3,a,b,c,d,e and then press INTRO]=> "
 
