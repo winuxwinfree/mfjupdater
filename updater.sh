@@ -33,7 +33,7 @@ patch () {
     systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked."
     sudo pacman -S alsa-utils || echo "Error installing alsa-utils."
     sudo pacman -S qastools || echo "Error installing qastools."
-  FILE=Desktop/qasmixer.desktop
+  FILE=$HOME/Desktop/qasmixer.desktop
   if [ ! -f "$FILE" ]; then
     cp /usr/share/applications/qasmixer.desktop $HOME/Desktop/ || echo "Error creating qasmixer shortcut on desktop"
   fi
@@ -57,7 +57,7 @@ patch () {
     echo "Discord patch skipped due to errors."
   fi
 
-  FILE=Desktop/updater.desktop
+  FILE=$HOME/Desktop/updater.desktop
   if [ ! -f "$FILE" ]; then
    cp /usr/share/applications/updater.desktop $HOME/Desktop/ || echo "Error creating mfjupdater shortcut on desktop, maybe it already exists.";
   fi
@@ -123,7 +123,7 @@ patch () {
  Icon=/usr/share/icons/tor.png
  StartupWMClass=Tor Browser" > ~/.local/share/applications/tor.desktop
 
- rm /home/pi/.local/share/applications/torinstall.desktop
+ rm $HOME/.local/share/applications/torinstall.desktop
 
  echo Done
  sleep 10
@@ -213,7 +213,8 @@ sh download-update_wine_test_apps.sh;
 echo "Open it from wine explorer. Wine explorer path: My Documents/wineapps.";
 sleep 10;;
 
-d) 
+d)
+
 echo "";
 read -p "Type (p) to use pulseaudio or (a) to use alsa=> " answer
 if [ $answer = p ] || [ $answer = pulseaudio ]; then
@@ -224,6 +225,8 @@ elif [ $answer = a ] || [ $answer = alsa ]; then
   echo "Switching to alsa. The pulseadio equalizer will stop working.";
   systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked.";
   systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked.";
+  echo -e "If you switched pulse to alsa follow the steps below to configure it correctly: \n 1. Right click on the volume icon. \n 2. Go to volume control settings. \n 3. Where it says -Command to open the mixer- type -alsamixer-. \n (you can also use this command in a terminal). \n This will open the advanced sound control settings \n by clicking on -Launch Mixer-.";
+  sleep 999;
 fi
 
 sleep 5;;
