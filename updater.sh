@@ -161,10 +161,10 @@ elif [ $answer = a ] || [ $answer = alsa ]; then
   systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked.";
   systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked.";
   echo -e "If you switched pulse to alsa follow the steps below to configure it correctly: \n 1. Right click on the volume icon. \n 2. Go to volume control settings. \n 3. Where it says -Command to open the mixer- type -alsamixer-. \n (you can also use this command in a terminal). \n Now you can open the advanced sound control settings \n by clicking on -Launch Mixer-.";
-  sleep 999;
 fi
 
-sleep 5;;
+sleep 999;;
+
 }
 
 
