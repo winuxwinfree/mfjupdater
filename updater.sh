@@ -64,7 +64,7 @@ patch () {
     sudo mv /usr/bin/discord /usr/share/bin/ || echo "Error installing Discord."
     echo "Done."
   else
-    echo "Discord patch skipped due to errors."
+    echo "Discord patch skipped."
   fi
 
   FILE=$HOME/Desktop/updater.desktop
