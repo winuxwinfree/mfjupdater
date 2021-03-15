@@ -53,6 +53,10 @@ patch () {
   sudo sed -i 's/console=ttyAMA0/console=serial0/g' /boot/cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline."
   echo "Done."
   
+  #xp boot sound fix
+  
+  xpsound
+  
   #discord fix
   
   echo "Step 3, repairing discord.";
@@ -71,6 +75,11 @@ patch () {
   if [ ! -f "$FILE" ]; then
    cp /usr/share/applications/updater.desktop $HOME/Desktop/ || echo "Error creating mfjupdater shortcut on desktop, maybe it already exists.";
   fi
+  
+  #xp alsa boot sound fix
+  
+  echo "@cvlc --play-and-exit /home/pi/xp.ogg" >> $HOME/.config/lxsession/LXDE/autostart 
+
   
   echo " 
 
@@ -180,7 +189,6 @@ elif [ $answer = a ] || [ $answer = alsa ]; then
 fi
 
 }
-
 
 #Fenix Updater -cli version- main menu.
 
