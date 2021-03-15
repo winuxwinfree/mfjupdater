@@ -53,10 +53,6 @@ patch () {
   sudo sed -i 's/console=ttyAMA0/console=serial0/g' /boot/cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline."
   echo "Done."
   
-  #xp boot sound fix
-  
-  xpsound
-  
   #discord fix
   
   echo "Step 3, repairing discord.";
@@ -80,7 +76,6 @@ patch () {
   
   echo "@cvlc --play-and-exit /home/pi/xp.ogg" >> $HOME/.config/lxsession/LXDE/autostart 
 
-  
   echo " 
 
  ____ ____ ____ ____ ____ ____ _________ ____ ____ ____ 
