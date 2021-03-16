@@ -75,11 +75,13 @@ patch () {
   
   #xp alsa boot sound fix
   
+  echo "Step 4, repairing the start-up sound.";
+  
   echo "@cvlc --play-and-exit /home/pi/xp.ogg" >> $HOME/.config/lxsession/LXDE/autostart 
   
   #install raspi-config
   
-  echo "Installing raspi-config"
+  echo "Step 5, installing raspi-config.";
   
   rm ~/.local/share/applications/raspi-config.desktop
   
@@ -117,7 +119,9 @@ patch () {
    3. Where it says -Command to open the mixer- type -alsamixer-. 
       (you can also use this command in a terminal). 
    Now you can open the advanced sound control settings 
-   by clicking on -Launch Mixer-."
+   by clicking on -Launch Mixer-.
+   With raspi-config you can change the audio output from hdmi to jack and viceversa.
+   "
    sleep 999;
    exit 1;;
 
