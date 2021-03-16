@@ -76,6 +76,27 @@ patch () {
   #xp alsa boot sound fix
   
   echo "@cvlc --play-and-exit /home/pi/xp.ogg" >> $HOME/.config/lxsession/LXDE/autostart 
+  
+  #install raspi-config
+  
+  echo "Installing raspi-config"
+  
+  rm ~/.local/share/applications/raspi-config.desktop
+  
+  wget https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/raspi-config-git.pkg.tar.zst
+  
+  sudo pacman -U raspi-config-git.pkg.tar.zst 
+  
+  echo "[Desktop Entry]
+  Type=Application
+  Name=Raspi-config
+  GenericName=Raspi-config
+  Comment=Raspi-config port for archlinux and MfJaro
+  Categories=System;
+  Exec=lxterminal -e sudo raspi-config
+  Icon=/usr/share/icons/hicolor/128x128/apps/rpi-imager.png
+  StartupWMClass=Tor Browser" > ~/.local/share/applications/raspi-config.desktop
+
 
   echo " 
 
