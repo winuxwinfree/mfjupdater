@@ -52,12 +52,20 @@ patch () {
   
   #bluetooth fix
   
-  echo "Step 2, repairing bluetooth problem.";
-  sudo systemctl unmask attach-bluetooth.service;
-  sudo systemctl start attach-bluetooth.service;
-  sudo sed -i 's/kgdboc=ttyAMA0/kgdboc=serial0/g' /boot/cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline."
-  sudo sed -i 's/console=ttyAMA0/console=serial0/g' /boot/cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline."
-  echo "Done."
+  echo "Step 2, repairing bluetooth problem."
+  
+  STRING="kgdboc=serial0"
+  FILE="/boot/cmdline.txt"
+  
+  if grep -qF "$STRING" "$FILE";then
+   echo "Nothing to do"
+  else
+   sudo systemctl unmask attach-bluetooth.service;
+   sudo systemctl start attach-bluetooth.service;
+   sudo sed -i 's/kgdboc=ttyAMA0/kgdboc=serial0/g' /boot/cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline."
+   sudo sed -i 's/console=ttyAMA0/console=serial0/g' /boot/cmdline.txt || echo "Error replacing ttyAMAO with serial0 in /boot/cmdline."
+   echo "Done." 
+  fi
   
   #discord fix
   
