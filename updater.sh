@@ -148,7 +148,8 @@ patch () {
   else
     echo "Nothing to do."
   fi
-
+  
+  sleep 5;
   echo " 
 
  ____ ____ ____ ____ ____ ____ _________ ____ ____ ____ 
@@ -171,7 +172,7 @@ patch () {
    by clicking on -Launch Mixer-.
    With raspi-config you can change the audio output from hdmi to jack and viceversa.
    "
-   sleep 999;
+   
    exit 1;;
 
            [Nn]* ) exit;;
