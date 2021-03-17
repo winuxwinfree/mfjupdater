@@ -35,6 +35,10 @@ patch () {
   #alsa audio fix
   
   echo "Step 1, installing alsa."
+  
+  if (systemctl -q is-active pulseaudio.service)
+    then
+    
   read -p " Alsa sound is better, but pulseaudio equalizer will not work, continue? (y/n)]=> " answer 
   if [ $answer = y ] || [ $answer = Y ]; then
     pkill pulseaudio || echo "Error killing pulseaudio, maybe it's killed."
@@ -43,12 +47,17 @@ patch () {
     sudo pacman -S alsa-utils || echo "Error installing alsa-utils."
     sudo pacman -S qastools || echo "Error installing qastools."
   FILE=$HOME/Desktop/qasmixer.desktop
-  if [ ! -f "$FILE" ]; then
+   if [ ! -f "$FILE" ]; then
     cp /usr/share/applications/qasmixer.desktop $HOME/Desktop/ || echo "Error creating qasmixer shortcut on desktop"
-  fi
-  else
+    echo "Done."
+   fi
+   else
     echo "Unable to install alsa."
   fi
+  
+ else
+    echo "Skipped."
+ fi
   
   #bluetooth fix
   
