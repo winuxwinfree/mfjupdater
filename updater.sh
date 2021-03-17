@@ -16,6 +16,11 @@ patch () {
   echo "   (After this the equalizer and pulse-audio options will not work)."
   echo "2: Bluetooth service does't work."
   echo "3: Discord does't work."
+  echo "4: The start-up sound doesn't work."
+  echo "In addition, it will do the following:"
+  echo "1: Install raspi-config."
+  echo "2: Ask if you want to add more software."
+  echo "3: Replace Pantheon-screenshot by Gnome-screenshot."
   echo 
 
   while true; do
@@ -99,6 +104,11 @@ patch () {
   Icon=/usr/share/icons/hicolor/128x128/apps/rpi-imager.png
   StartupWMClass=Tor Browser" > ~/.local/share/applications/raspi-config.desktop
 
+  #Replace Pantheon-screenshot by Gnome-screenshot.
+  
+  sudo pacman -R pantheon-screenshot
+  sudo pacman -S gnome-screenshot
+  
 
   echo " 
 
