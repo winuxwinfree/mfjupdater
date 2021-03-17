@@ -124,8 +124,6 @@ patch () {
     echo "Raspi-config is already installed."
   fi
 
-  echo
-
   #Replace Pantheon-screenshot by Gnome-screenshot.
   
   echo "Step 6, replacing Pantheon-screenshot by Gnome-screenshot.";
