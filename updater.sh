@@ -85,6 +85,8 @@ patch () {
   
   echo "@cvlc --play-and-exit /home/pi/xp.ogg" >> $HOME/.config/lxsession/LXDE/autostart 
   
+  echo "Done."
+  
   #install raspi-config
     
   echo "Step 5, installing raspi-config.";
@@ -108,6 +110,8 @@ patch () {
   Icon=/usr/share/icons/hicolor/128x128/apps/rpi-imager.png
   StartupWMClass=Tor Browser" > ~/.local/share/applications/raspi-config.desktop
   
+  echo "Done.";
+  
   else
     echo "Raspi-config is already installed."
   fi
@@ -115,6 +119,8 @@ patch () {
   echo
 
   #Replace Pantheon-screenshot by Gnome-screenshot.
+  
+  echo "Step 6, replacing Pantheon-screenshot by Gnome-screenshot.";
   
   FILE=/var/lib/pacman/local/pantheon-screenshot*
   if [ -f "$FILE" ]; then
