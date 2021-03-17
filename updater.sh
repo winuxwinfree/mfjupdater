@@ -56,7 +56,7 @@ patch () {
   fi
   
  else
-    echo "Skipped."
+    echo "Nothing to do."
  fi
   
   #bluetooth fix
@@ -67,7 +67,7 @@ patch () {
   FILE="/boot/cmdline.txt"
   
   if grep -qF "$STRING" "$FILE";then
-   echo "Nothing to do"
+   echo "Nothing to do."
   else
    sudo systemctl unmask attach-bluetooth.service;
    sudo systemctl start attach-bluetooth.service;
@@ -87,7 +87,7 @@ patch () {
     sudo mv /usr/bin/discord /usr/share/bin/ || echo "Error installing Discord."
     echo "Done."
   else
-    echo "Discord patch skipped."
+    echo "Nothing to do."
   fi
 
   FILE=$HOME/Desktop/updater.desktop
@@ -130,7 +130,7 @@ patch () {
   echo "Done.";
   
   else
-    echo "Raspi-config is already installed."
+    echo "Nothing to do."
   fi
 
   #Replace Pantheon-screenshot by Gnome-screenshot.
@@ -146,7 +146,7 @@ patch () {
       sudo pacman -S gnome-screenshot
    fi
   else
-    echo "Gnome-screenshot is already installed."
+    echo "Nothing to do."
   fi
 
   echo " 
