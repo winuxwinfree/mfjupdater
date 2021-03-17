@@ -117,7 +117,7 @@ patch () {
   #Replace Pantheon-screenshot by Gnome-screenshot.
   
   FILE=/var/lib/pacman/local/pantheon-screenshot*
-  if [ ! -f "$FILE" ]; then
+  if [ -f "$FILE" ]; then
   read -p "Replace Pantheon-screenshot by Gnome-screenshot? (y/n)]=> " answer 
  
    if [ $answer = y ] || [ $answer = Y ]; then
