@@ -90,7 +90,7 @@ patch () {
   echo "Step 5, installing raspi-config.";
   
   FILE=/usr/bin/raspi-config
-  if [ -f "$FILE" ]; then
+  if [ ! -f "$FILE" ]; then
   
   rm ~/.local/share/applications/raspi-config.desktop
   
@@ -116,7 +116,7 @@ patch () {
 
   #Replace Pantheon-screenshot by Gnome-screenshot.
   
-  read -p " Replace Pantheon-screenshot by Gnome-screenshot? (y/n)]=> " answer 
+  read -p "Replace Pantheon-screenshot by Gnome-screenshot? (y/n)]=> " answer 
  
    if [ $answer = y ] || [ $answer = Y ]; then
       sudo pacman -R pantheon-screenshot
