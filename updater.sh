@@ -35,7 +35,7 @@ patch () {
   #alsa audio fix
   
   echo "Step 1, installing alsa."
-  read -p " Alsa sound is better, but pulseaduio equalizer will not work, continue? (y/n)]=> " answer 
+  read -p " Alsa sound is better, but pulseaudio equalizer will not work, continue? (y/n)]=> " answer 
   if [ $answer = y ] || [ $answer = Y ]; then
     pkill pulseaudio || echo "Error killing pulseaudio, maybe it's killed."
     systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked."
@@ -116,12 +116,17 @@ patch () {
 
   #Replace Pantheon-screenshot by Gnome-screenshot.
   
+  FILE=/var/lib/pacman/local/pantheon-screenshot*
+  if [ ! -f "$FILE" ]; then
   read -p "Replace Pantheon-screenshot by Gnome-screenshot? (y/n)]=> " answer 
  
    if [ $answer = y ] || [ $answer = Y ]; then
       sudo pacman -R pantheon-screenshot
       sudo pacman -S gnome-screenshot
    fi
+  else
+    echo "Gnome-screenshot is already installed."
+  fi
 
   echo " 
 
