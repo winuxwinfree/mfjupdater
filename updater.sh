@@ -333,8 +333,9 @@ else
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R samba  || echo "Error installing samba."
-     sudo pacman -R manjaro-settings-samba || echo "Error installing manjaro-settings-samba."
+     sudo pacman -S manjaro-settings-samba || echo "Error installing manjaro-settings-samba."
+     sudo pacman -S samba  || echo "Error installing samba."
+   
    fi
 fi
 
