@@ -20,8 +20,8 @@ patch () {
   echo 
   echo "In addition, it will do the following:"
   echo "1: Install raspi-config."
-  echo "2: Ask if you want to add more software."
-  echo "3: Replace Pantheon-screenshot by Gnome-screenshot."
+  echo "2: Replace Pantheon-screenshot by Gnome-screenshot."
+  echo "3: Ask if you want to add more software."
   echo 
 
   while true; do
@@ -150,6 +150,15 @@ patch () {
   fi
   
   sleep 5;
+  
+  echo
+  read -p "Run the Add-On Wizard? [y/n]=> " answer
+  if [ $answer = y ] || [ $answer = Y ]; then
+   addapps;
+  fi
+  
+  sleep 5;
+  
   echo " 
 
  ____ ____ ____ ____ ____ ____ _________ ____ ____ ____ 
