@@ -49,7 +49,27 @@ patch () {
   FILE=$HOME/Desktop/qasmixer.desktop
    if [ ! -f "$FILE" ]; then
     cp /usr/share/applications/qasmixer.desktop $HOME/Desktop/ || echo "Error creating qasmixer shortcut on desktop"
-    echo "Done."
+     echo " 
+                        ";
+   echo "If you switched pulse to alsa follow the steps below to configure it correctly:
+   1. Right click on the volume icon.
+   2. Go to volume control settings.
+   3. Where it says -Command to open the mixer- type -alsamixer-. 
+      (you can also use this command in a terminal). 
+   Now you can open the advanced sound control settings 
+   by clicking on -Launch Mixer-.
+   4.
+       ____ ____ ____ ____ ____ ____ _________ ____ ____ ____ 
+    ||R |||e |||b |||o |||o |||t |||       |||t |||h |||e ||
+    ||__|||__|||__|||__|||__|||__|||_______|||__|||__|||__||
+    |/__\|/__\|/__\|/__\|/__\|/__\|/_______\|/__\|/__\|/__\|
+     ____ ____ ____ ____ ____ ____ 
+    ||s |||y |||s |||t |||e |||m ||
+    ||__|||__|||__|||__|||__|||__||
+    |/__\|/__\|/__\|/__\|/__\|/__\|
+
+   With raspi-config you can change the audio output from hdmi to jack and viceversa.
+   "
    fi
    else
     echo "Unable to install alsa."
@@ -150,7 +170,7 @@ patch () {
   fi
   
   sleep 5;
-  
+   
   echo
   read -p "Run the Add-On Wizard? [y/n]=> " answer
   if [ $answer = y ] || [ $answer = Y ]; then
@@ -159,29 +179,6 @@ patch () {
   
   sleep 5;
   
-  echo " 
-
- ____ ____ ____ ____ ____ ____ _________ ____ ____ ____ 
-||R |||e |||b |||o |||o |||t |||       |||t |||h |||e ||
-||__|||__|||__|||__|||__|||__|||_______|||__|||__|||__||
-|/__\|/__\|/__\|/__\|/__\|/__\|/_______\|/__\|/__\|/__\|
- ____ ____ ____ ____ ____ ____ 
-||s |||y |||s |||t |||e |||m ||
-||__|||__|||__|||__|||__|||__||
-|/__\|/__\|/__\|/__\|/__\|/__\|
-
-
-                        ";
-   echo "If you switched pulse to alsa follow the steps below to configure it correctly:
-   1. Right click on the volume icon.
-   2. Go to volume control settings.
-   3. Where it says -Command to open the mixer- type -alsamixer-. 
-      (you can also use this command in a terminal). 
-   Now you can open the advanced sound control settings 
-   by clicking on -Launch Mixer-.
-   With raspi-config you can change the audio output from hdmi to jack and viceversa.
-   "
-   
    exit 1;;
 
            [Nn]* ) exit;;
