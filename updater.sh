@@ -276,21 +276,47 @@ fi
 #Add software function.
 
 addapps () {
+
+#anbox
+
 echo
 if [ ! -f /usr/bin/anbox ]; then
   echo "Install anbox (Android In a Box)?"
   echo -e "\nAnbox may reduce system performance. \nYou can uninstall it by running this wizard again.\n"
   read -p "Continue? (y/n)]=> " answer 
-if [ $answer = y ] || [ $answer = Y ]; then
-  sudo pacman -S anbox-image-aarch64 || echo "Error installing anbox."
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S anbox-image-aarch64 || echo "Error installing anbox."
+   fi
 fi
-else
+
+if [ -f /usr/bin/anbox ]; then
   read -p "Uninstall anbox? (y/n)]=> " answer 
-if [ $answer = y ] || [ $answer = Y ]; then
-  sudo pacman -R anbox-image-aarch64
-  sudo pacman -R anbox
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R anbox-image-aarch64
+     sudo pacman -R anbox
+   fi
 fi
+
+#simplescreen recorder
+
+
+echo
+if [ ! -f /usr/bin/simplescreenrecorder ]; then
+  echo "Install simplescreenrecorder?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S simplescreenrecorder || echo "Error installing simplescreenrecorder."
+   fi
 fi
+
+if [ -f /usr/bin/simplescreenrecorder ]; then
+  read -p "Uninstall simplescreenrecorder? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R simplescreenrecorder
+   fi
+fi
+
 }
 
 #Fenix Updater -cli version- main menu.
