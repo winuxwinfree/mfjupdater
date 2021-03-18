@@ -287,12 +287,10 @@ if [ -f /usr/bin/anbox ]; then
      sudo pacman -R anbox-image-aarch64
      sudo pacman -R anbox
    fi
-fi
-
-if [ ! -f /usr/bin/anbox ]; then
-  echo "Install anbox (Android In a Box)?"
-  echo -e "\nAnbox may reduce system performance. \nYou can uninstall it by running this wizard again.\n"
-  read -p "Continue? (y/n)]=> " answer 
+else
+   echo "Install anbox (Android In a Box)?"
+   echo -e "\nAnbox may reduce system performance. \nYou can uninstall it by running this wizard again.\n"
+   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
      sudo pacman -S anbox-image-aarch64 || echo "Error installing anbox."
    fi
@@ -309,10 +307,7 @@ if [ -f /usr/bin/simplescreenrecorder ]; then
     if [ $answer = y ] || [ $answer = Y ]; then
      sudo pacman -R simplescreenrecorder
    fi
-fi
-
-
-if [ ! -f /usr/bin/simplescreenrecorder ]; then
+else
   echo "Install simplescreenrecorder?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
