@@ -50,12 +50,12 @@ patch () {
    
    echo
     echo "To complete the configuration read the AudioFix.txt file that has been created on the desktop."
-    
+   echo
    for i in {0..10..1}; do echo -e "$i"'\c'
    echo -n " "
    sleep 1
    done
-
+   echo
    echo "If you switched pulse to alsa follow the steps below to configure it correctly:
    1. Right click on the volume icon.
    2. Go to volume control settings.
