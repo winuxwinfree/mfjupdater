@@ -131,6 +131,7 @@ patch () {
   
   echo "Done."
   
+  
   #config.txt editable from home directory.
   
   echo "Step 5, Creating a config.txt editable from home directory."
@@ -140,12 +141,12 @@ patch () {
   echo -n "#!" > ~/config.txt
   echo -n "/bin/bash" >> ~/config.txt
   echo -e "\nlxterminal -e sudo nano /boot/config.txt" >> config.txt
+  sudo chmod +x $HOME/config.txt || echo "Error"
+  echo "Done."
   else
     echo "Nothing to do."
   fi
-  sudo chmod +x $HOME/config.txt || echo "Error"
   
-  echo "Done."
   
   #install raspi-config
     
