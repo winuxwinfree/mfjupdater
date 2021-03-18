@@ -131,6 +131,16 @@ patch () {
   
   echo "Done."
   
+  #config.txt editable from home directory.
+  
+  FILE=$HOME/config.txt
+  if [ ! -f "$FILE" ]; then
+  echo "#!/bin/bash
+  lxterminal -e sudo nano /boot/config.txt"
+  > $HOME/config.txt
+  fi
+  sudo chmod +x $HOME/config.txt
+  
   #install raspi-config
     
   echo "Step 5, installing raspi-config.";
