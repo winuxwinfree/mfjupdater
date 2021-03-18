@@ -49,19 +49,13 @@ patch () {
     sudo pacman -S qastools || echo "Error installing qastools."
    
    echo
-    echo "If you switched pulse to alsa follow the steps below to configure it correctly:
-   1. Right click on the volume icon.
-   2. Go to volume control settings.
-   3. Where it says -Command to open the mixer- type -alsamixer-. 
-      (you can also use this command in a terminal). 
-   Now you can open the advanced sound control settings 
-   by clicking on -Launch Mixer-.
-   4. Reboot.
+    echo "To complete the configuration read the AudioFix.txt file that has been created on the desktop."
+    
+   for i in {0..10..1}; do echo -e "$i"'\c'
+   echo -n " "
+   sleep 1
+   done
 
-   With raspi-config you can change the 
-   audio output from hdmi to jack and viceversa.
-   "
-   
    echo "If you switched pulse to alsa follow the steps below to configure it correctly:
    1. Right click on the volume icon.
    2. Go to volume control settings.
@@ -74,8 +68,6 @@ patch () {
    With raspi-config you can change the 
    audio output from hdmi to jack and viceversa.
    " >> $HOME/Desktop/AudioFix.txt
-   
-  sleep 30
   
   FILE=$HOME/Desktop/qasmixer.desktop
    if [ ! -f "$FILE" ]; then
