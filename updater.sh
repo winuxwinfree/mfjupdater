@@ -278,24 +278,6 @@ fi
 
 addapps () {
 
-#anbox
-
-echo
-
-if [ -f /usr/bin/anbox ]; then
-  read -p "Uninstall anbox? (y/n)]=> " answer 
-    if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R anbox-image-aarch64
-     sudo pacman -R anbox
-   fi
-else
-   echo "Install anbox (Android In a Box)?"
-   echo -e "\nAnbox may reduce system performance. \nYou can uninstall it by running this wizard again.\n"
-   read -p "Continue? (y/n)]=> " answer 
-   if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -S anbox-image-aarch64 || echo "Error installing anbox."
-   fi
-fi
 
 
 #simplescreen recorder
@@ -317,6 +299,25 @@ else
    fi
 fi
 
+#xscreensaver
+
+echo
+
+if [ -f /usr/bin/xscreensaver ]; then
+  read -p "Uninstall xscreensaver? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R xscreensaver
+   fi
+else
+   echo "Install xscreensaver?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S xscreensaver || echo "Error installing xscreensaver."
+   fi
+fi
+
+
 #smb
 
 
@@ -325,17 +326,35 @@ echo
 if [ -f /usr/bin/smbd ]; then
   read -p "Uninstall samba? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R samba
      sudo pacman -R manjaro-settings-samba
+     sudo pacman -R samba 
    fi
 else
   echo "Install samba?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -S manjaro-settings-samba || echo "Error installing manjaro-settings-samba."
      sudo pacman -S samba  || echo "Error installing samba."
-   
+     sudo pacman -S manjaro-settings-samba || echo "Error installing manjaro-settings-samba."
+   fi
+fi
+
+#anbox
+
+echo
+
+if [ -f /usr/bin/anbox ]; then
+  read -p "Uninstall anbox? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R anbox-image-aarch64
+     sudo pacman -R anbox
+   fi
+else
+   echo "Install anbox (Android In a Box)?"
+   echo -e "\nAnbox may reduce system performance. \nYou can uninstall it by running this wizard again.\n"
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S anbox-image-aarch64 || echo "Error installing anbox."
    fi
 fi
 
