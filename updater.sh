@@ -36,21 +36,32 @@ patch () {
   
   echo "Step 1, installing alsa."
   
-  if (systemctl -q is-active pulseaudio.service)
-    then
-    
-  read -p " Alsa sound is better, but pulseaudio equalizer will not work, continue? (y/n)]=> " answer 
+  DIRECTORY=/usr/bin
+  FILE=/usr/bin/qasmixer 
+  
+  if [ ! -f "$FILE" ]; then
+      read -p " Alsa sound is better, but pulseaudio equalizer will not work, continue? (y/n)]=> " answer 
   if [ $answer = y ] || [ $answer = Y ]; then
     pkill pulseaudio || echo "Error killing pulseaudio, maybe it's killed."
     systemctl --user mask pulseaudio.service || echo "Error masking pulseaudio.service, maybe it's already masked."
     systemctl --user mask pulseaudio.socket || echo "Error masking pulseaudio.socket, maybe it's already masked."
     sudo pacman -S alsa-utils || echo "Error installing alsa-utils."
     sudo pacman -S qastools || echo "Error installing qastools."
-  FILE=$HOME/Desktop/qasmixer.desktop
-   if [ ! -f "$FILE" ]; then
-    cp /usr/share/applications/qasmixer.desktop $HOME/Desktop/ || echo "Error creating qasmixer shortcut on desktop"
-     echo " 
-                        ";
+   
+   echo
+    echo "If you switched pulse to alsa follow the steps below to configure it correctly:
+   1. Right click on the volume icon.
+   2. Go to volume control settings.
+   3. Where it says -Command to open the mixer- type -alsamixer-. 
+      (you can also use this command in a terminal). 
+   Now you can open the advanced sound control settings 
+   by clicking on -Launch Mixer-.
+   4. Reboot.
+
+   With raspi-config you can change the 
+   audio output from hdmi to jack and viceversa.
+   "
+   
    echo "If you switched pulse to alsa follow the steps below to configure it correctly:
    1. Right click on the volume icon.
    2. Go to volume control settings.
@@ -58,19 +69,21 @@ patch () {
       (you can also use this command in a terminal). 
    Now you can open the advanced sound control settings 
    by clicking on -Launch Mixer-.
-   4.
-       ____ ____ ____ ____ ____ ____ _________ ____ ____ ____ 
-    ||R |||e |||b |||o |||o |||t |||       |||t |||h |||e ||
-    ||__|||__|||__|||__|||__|||__|||_______|||__|||__|||__||
-    |/__\|/__\|/__\|/__\|/__\|/__\|/_______\|/__\|/__\|/__\|
-     ____ ____ ____ ____ ____ ____ 
-    ||s |||y |||s |||t |||e |||m ||
-    ||__|||__|||__|||__|||__|||__||
-    |/__\|/__\|/__\|/__\|/__\|/__\|
+   4. Reboot.
 
-   With raspi-config you can change the audio output from hdmi to jack and viceversa.
-   "
+   With raspi-config you can change the 
+   audio output from hdmi to jack and viceversa.
+   " >> $HOME/Desktop/AudioFix.txt
+   
+  sleep 30
+  
+  FILE=$HOME/Desktop/qasmixer.desktop
+   if [ ! -f "$FILE" ]; then
+    cp /usr/share/applications/qasmixer.desktop $HOME/Desktop/ || echo "Error creating qasmixer shortcut on desktop"
+     echo " 
+                        ";
    fi
+
    else
     echo "Unable to install alsa."
   fi
