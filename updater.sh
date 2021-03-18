@@ -49,12 +49,13 @@ patch () {
     sudo pacman -S qastools || echo "Error installing qastools."
    
    echo
-    echo "To complete the configuration read the AudioFix.txt file that has been created on the desktop."
+    echo -e "To complete the configuration read the AudioFix.txt\nfile that has been created on the desktop."
    echo
    for i in {0..10..1}; do echo -e "$i"'\c'
    echo -n " "
    sleep 1
    done
+   echo
    echo
    echo "If you switched pulse to alsa follow the steps below to configure it correctly:
    1. Right click on the volume icon.
@@ -174,7 +175,7 @@ patch () {
     echo "Nothing to do."
   fi
   
-  sleep 5;
+  sleep 3;
    
   echo
   read -p "Run the Add-On Wizard? [y/n]=> " answer
@@ -182,7 +183,7 @@ patch () {
    addapps;
   fi
   
-  sleep 5;
+  sleep 3;
   
    exit 1;;
 
