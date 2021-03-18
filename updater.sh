@@ -133,13 +133,15 @@ patch () {
   
   #config.txt editable from home directory.
   
-  echo "Creating a config.txt editable from home directory."
+  echo "Step 5, Creating a config.txt editable from home directory."
   
   FILE=$HOME/config.txt
   if [ ! -f "$FILE" ]; then
   echo -n "#!" > ~/config.txt
   echo -n "/bin/bash" >> ~/config.txt
   echo -e "\nlxterminal -e sudo nano /boot/config.txt" >> config.txt
+  else
+    echo "Nothing to do."
   fi
   sudo chmod +x $HOME/config.txt || echo "Error"
   
@@ -147,7 +149,7 @@ patch () {
   
   #install raspi-config
     
-  echo "Step 5, installing raspi-config.";
+  echo "Step 6, installing raspi-config.";
   
   FILE=/usr/bin/raspi-config
   if [ ! -f "$FILE" ]; then
@@ -176,7 +178,7 @@ patch () {
 
   #Replace Pantheon-screenshot by Gnome-screenshot.
   
-  echo "Step 6, replacing Pantheon-screenshot by Gnome-screenshot.";
+  echo "Step 7, replacing Pantheon-screenshot by Gnome-screenshot.";
   
   FILE=/var/lib/pacman/local/pantheon-screenshot*
   if [ -f "$FILE" ]; then
