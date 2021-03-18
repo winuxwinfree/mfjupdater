@@ -328,38 +328,27 @@ case $opcion in
 echo "";
 
 read -p "Which branch do you want to use? [s(stable)/u(unstable)]=> " answer
+#stable
 if [ $answer = s ] || [ $answer = stable ]; then
   echo "Upgrading MFjaro using the stable branch";
   sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
-  
-  echo
-  read -p "Run the Add-On Wizard? [y/n]=> " answer
-  if [ $answer = y ] || [ $answer = Y ]; then
-   addapps;
-  fi
-  
-  echo ;
+  echo;
+  patch;
+  echo;
   read -p "Clean unused packages and cache? (recommended to free up space after upgrade). [y/n]=> " answer
   if [ $answer = y ] || [ $answer = Y ]; then
    echo  "Attention, please read the following warnings before proceeding:";
    sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);
   fi
-  
- patch;
-  
-elif [ $answer = u ] || [ $answer = unstable ]; then
+ #unstable
+ elif [ $answer = u ] || [ $answer = unstable ]; then
   echo "Upgrading MFjaro using the unstable branch";
   sudo pacman-mirrors -aS unstable || echo "You are already using the unstable branch or the command can't be executed.";
   sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
-  
-  echo
-  read -p "Run the Add-On Wizard? [y/n]=> " answer
-  if [ $answer = y ] || [ $answer = Y ]; then
-   addapps;
-  fi
-  
-  echo ;
+  echo;
+  patch;
+  echo;
   read -p "Clean unused packages and cache? (recommended to free up space after upgrade.). [y/n]=> " answer
   if [ $answer = y ] || [ $answer = Y ]; then
    echo  "Attention, please read the following warnings before proceeding:";
