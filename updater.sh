@@ -135,9 +135,9 @@ patch () {
   #config.txt editable from home directory.
   
   echo "Step 5, Creating a config.txt editable from home directory."
-  
+ 
   FILE=$HOME/config.txt
-  if [ ! -f "$FILE" ]; then
+  if [ ! -x "$FILE" ]; then
   echo -n "#!" > ~/config.txt
   echo -n "/bin/bash" >> ~/config.txt
   echo -e "\nlxterminal -e sudo nano /boot/config.txt" >> config.txt
