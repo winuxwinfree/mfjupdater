@@ -473,7 +473,7 @@ echo "
 ==============
 "
 echo "1)  Wireshark (Network Security Tool). "
-echo "2)  Nextcloud (Desktop synchronization client)."
+echo "2)  Moonlight (Stream your games)."
 echo "3)  Audacious (Audio Player)."
 echo "4)  Arduino IDE."
 echo "5)  Cura (3D Software)."
@@ -484,6 +484,7 @@ echo "9)  LibreCAD (A proffesional CAD system)."
 echo "10) Gimp (Create/edit photographs)."
 echo "11) OpenShot (Video Editor)."
 echo "12) Audacity (Record and edit audio files)."
+echo "13) VScodium (Source code editor)."
 echo ""
 echo "p) Previous."
 echo "q) Return to the main menu."
@@ -498,7 +499,7 @@ case $opcion in
 1)
 wireshark;;
 2)
-nextcloud;;
+moonlight;;
 3)
 audacious;;
 4)
@@ -519,6 +520,8 @@ gimp;;
 openshot;;
 12)
 audacity;;
+13)
+vscodium;;
 
 p)
 addapps2;;
@@ -561,21 +564,44 @@ fi
 }
 
 
-nextcloud () {
+moonlight () {
 
 echo
 
-if [ -f /usr/bin/nextcloud ]; then
-  read -p "Uninstall NextCloud? (y/n)]=> " answer 
+if [ -f /usr/bin/moonlight ]; then
+  read -p "Uninstall Moonlight? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R nextcloud
+     sudo pacman -R moonlight
    fi
 else
-   echo "Install NextCloud?"
+   echo "Install Moonlight?"
    echo "You can uninstall it by running this wizard again."
    read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -S nextcloud || echo "Error installing nextcloud."
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/moonlight-qt-3.1.0-1-aarch64.pkg.tar.zst
+     sudo pacman -U moonlight-qt-3.1.0-1-aarch64.pkg.tar.zst || echo "Error installing Moonlight."
+   fi
+fi
+
+
+}
+
+vscodium () {
+
+echo
+
+if [ -f /usr/bin/vscodium ]; then
+  read -p "Uninstall Vscodium? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R vscodium
+   fi
+else
+   echo "Install VScodium?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/vscodium-bin-1.54.3-1-aarch64.pkg.tar.zst
+     sudo pacman -U vscodium-bin-1.54.3-1-aarch64.pkg.tar.zst || echo "Error installing vscodium."
    fi
 fi
 
@@ -695,7 +721,7 @@ echo
 if [ -f /usr/bin/libreoffice ]; then
   read -p "Uninstall libreoffice? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R libreoffice
+     sudo pacman -R libreoffice-fresh
    fi
 else
    echo "Install libreoffice?"
