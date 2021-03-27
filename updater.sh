@@ -305,15 +305,17 @@ echo "
 ╩ ╩╩  ╩  ╚═╝
 ============
 "
-echo "1) Simplescreenrecorder. "
-echo "2) Xscreensaver."
-echo "3) Samba/CIFS (Windows Network)."
-echo "4) Anbox (android emulator)."
-echo "5) XDMAN (Xtreme Download Manager)."
-echo "6) Nomachine (Remote Desktop)."
-echo "7) Qjoypad (Gamepad... mapping)."
-echo "8) Multimc5 (Minecraft Launcher)."
-echo "9) Argon Case Fan Control."
+echo "1)  Simplescreenrecorder. "
+echo "2)  Xscreensaver."
+echo "3)  Samba/CIFS (Windows Network)."
+echo "4)  Anbox (Android Emulator)."
+echo "5)  XDMAN (Xtreme Download Manager)."
+echo "6)  Nomachine (Remote Desktop)."
+echo "7)  Qjoypad (Gamepad... mapping)."
+echo "8)  Multimc5 (Minecraft Launcher)."
+echo "9)  Argon Case Fan Control."
+echo "10) Antimicro (Gamepad... mapping)."
+echo "11) Ksnip (Screenshot tool)."
 echo ""
 echo "q) Return to the main menu."
 echo ""
@@ -341,7 +343,11 @@ qjoypad;;
 8)
 multimc5;;
 9)
-argon;;
+argonone;;
+10)
+antimicrox;;
+11)
+ksnip;;
 
 q) 
 clear;
@@ -509,14 +515,14 @@ fi
 }
 
 
-multimc5 () {
+argonone () {
 
 echo
 
 if [ -f  /usr/bin/argonone-cli   ]; then
   read -p "Uninstall argonone? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R argonone
+     sudo pacman -R argonone-c-git
    fi
 else
   echo "Install argonone?"
@@ -527,6 +533,48 @@ else
      sudo pacman -U argonone-c-git-r37.b30b87d-2-aarch64.pkg.tar.zst
    fi
 fi
+
+antimicrox () {
+
+echo
+
+if [ -f  /usr/bin/antimicrox   ]; then
+  read -p "Uninstall antimicrox ? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R antimicrox
+   fi
+else
+  echo "Install antimicrox?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/antimicrox-3.1.4-1-aarch64.pkg.tar.zst
+     sudo pacman -U antimicrox-3.1.4-1-aarch64.pkg.tar.zst
+   fi
+fi
+
+
+}
+
+ksnip () {
+
+echo
+
+if [ -f  /usr/bin/ksnip  ]; then
+  read -p "Uninstall ksnip ? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R ksnip
+   fi
+else
+  echo "Install ksnip?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/ksnip-1.8.1-2-aarch64.pkg.tar.zst
+     sudo pacman -U ksnip-1.8.1-2-aarch64.pkg.tar.zst
+   fi
+fi
+
 
 }
 
