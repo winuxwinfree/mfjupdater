@@ -200,17 +200,20 @@ patch () {
   read -p "Run the Add-On Wizard? [y/n]=> " answer
   if [ $answer = y ] || [ $answer = Y ]; then
    addapps;
+   else 
+   clear
+   menu
   fi
   
   sleep 3;
   
    exit 1;;
 
-           [Nn]* ) exit;;
+           [Nn]* )  clear; menu;;
            * ) echo "Please answer yes or no.";;
        esac
    done
-
+ 
 }
 
  #Install Tor-Browser function / Thanks to botspot.
