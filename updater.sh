@@ -244,7 +244,7 @@ patch () {
  StartupWMClass=Tor Browser" > ~/.local/share/applications/tor.desktop
 
  rm $HOME/.local/share/applications/torinstall.desktop
- xdg-open https://sourceforge.net/projects/tor-browser-ports/files/
+ xdg-open https://sourceforge.net/projects/tor-browser-ports/files/ >> /dev/null
  echo Done
  sleep 10
 
@@ -955,7 +955,7 @@ else
    if [ $answer = y ] || [ $answer = Y ]; then
      wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/argonone-c-git-r37.b30b87d-2-aarch64.pkg.tar.zst
      sudo pacman -U argonone-c-git-r37.b30b87d-2-aarch64.pkg.tar.zst
-     xdg-open https://gitlab.com/DarkElvenAngel/argononed
+     xdg-open https://gitlab.com/DarkElvenAngel/argononed >> /dev/null
 
    fi
 fi
