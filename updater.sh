@@ -317,6 +317,7 @@ echo "10) Antimicro (Gamepad... mapping)."
 echo "11) Ksnip (Screenshot tool)."
 echo "12) Residual VM (LucasArts Games EMU)."
 echo ""
+echo "n) Next."
 echo "q) Return to the main menu."
 echo ""
 echo -n "[Type an option and then press INTRO]=> "
@@ -350,6 +351,84 @@ antimicrox;;
 ksnip;;
 12)
 residualvm;;
+n)
+addapps2;;
+q) 
+clear;
+menu;;
+
+*)
+
+echo "$opc invalid option ";
+echo "Press a key to continue.";
+read foo;;
+
+ esac
+done
+
+}
+
+addapps2 () {
+
+clear
+
+while :
+  do
+echo "
+╔═╗╔═╗╔═╗╔═╗
+╠═╣╠═╝╠═╝╚═╗ 2
+╩ ╩╩  ╩  ╚═╝
+==============
+"
+echo "1)  Gbrainy. "
+echo "2)  Gnome Nibbles."
+echo "3)  Hatari."
+echo "4)  Stella."
+echo "5)  Deja-Dup."
+echo "6)  Dsmume."
+echo "7)  Gnome-passwordsafe."
+echo "8)  Scummvm."
+echo "9)  Higan."
+echo "10) Mame."
+echo "11) Qmc2."
+echo "12) Aircrack-ng."
+echo ""
+echo "p) Previous."
+echo "q) Return to the main menu."
+echo ""
+echo -n "[Type an option and then press INTRO]=> "
+
+
+read opcion
+case $opcion in
+
+
+1)
+gbrainy;;
+2)
+nibbles;;
+3)
+hatari;;
+4)
+stella;;
+5)
+deja-dup;;
+6)
+dsmume;;
+7)
+gnome-passwordsafe;;
+8)
+scummvm;;
+9)
+higan;;
+10)
+mame;;
+11)
+qmc2;;
+12)
+aircrackng2;;
+p)
+addapps;;
 
 q) 
 clear;
@@ -368,261 +447,250 @@ done
 
 #apps installers/uninstallers
 
-simplescreenrecorder () {
+gbrainy () {
 
 echo
 
-if [ -f /usr/bin/simplescreenrecorder ]; then
-  read -p "Uninstall simplescreenrecorder? (y/n)]=> " answer 
+if [ -f /usr/bin/gbrainy ]; then
+  read -p "Uninstall gbrainy? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R simplescreenrecorder
+     sudo pacman -R gbrainy
    fi
 else
-  echo "Install simplescreenrecorder?"
+  echo "Install gbrainy?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -S simplescreenrecorder || echo "Error installing simplescreenrecorder."
+     sudo pacman -S gbrainy || echo "Error installing gbrainy."
    fi
 fi
 
 }
 
 
-xscreensaver () {
+nibbles () {
 
 echo
 
-if [ -f /usr/bin/xscreensaver ]; then
-  read -p "Uninstall xscreensaver? (y/n)]=> " answer 
+if [ -f /usr/bin/nibbles ]; then
+  read -p "Uninstall nibbles? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R xscreensaver
+     sudo pacman -R nibbles
    fi
 else
-   echo "Install xscreensaver?"
+   echo "Install nibbles?"
    echo "You can uninstall it by running this wizard again."
    read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -S xscreensaver || echo "Error installing xscreensaver."
+     sudo pacman -S nibbles || echo "Error installing nibbles."
    fi
 fi
 
 
 }
 
-smb () {
+hatari () {
 
 echo
 
-if [ -f /usr/bin/smbd ]; then
-  read -p "Uninstall samba? (y/n)]=> " answer 
+if [ -f /usr/bin/hatari ]; then
+  read -p "Uninstall hatari? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R manjaro-settings-samba
-     sudo pacman -R samba 
+     sudo pacman -R hatari
    fi
 else
-  echo "Install samba?"
+  echo "Install hatari?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -S samba  || echo "Error installing samba."
-     sudo pacman -S manjaro-settings-samba || echo "Error installing manjaro-settings-samba."
+     sudo pacman -S hatari  || echo "Error installing hatari."
    fi
 fi
 
 }
 
-xdman () {
+stella () {
 
 echo
 
-if [ -f /usr/bin/xdman ]; then
-  read -p "Uninstall xdman? (y/n)]=> " answer 
+if [ -f /usr/bin/stella ]; then
+  read -p "Uninstall stella? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R xdman
+     sudo pacman -R stella
    fi
 else
-  echo "Install xdman?"
+  echo "Install stella?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/xdman-2020.7.2.11-2-aarch64.pkg.tar.zst
-     sudo pacman -U xdman-2020.7.2.11-2-aarch64.pkg.tar.zst
+     sudo pacman -S stella  || echo "Error installing stella."
    fi
 fi
 
 }
 
-nomachine () {
+
+deja-dup () {
 
 echo
 
-if [ -f /var/lib/flatpak/exports/share/applications/NoMachine-base.desktop ]; then
-  read -p "Uninstall nomachine? (y/n)]=> " answer 
+if [ -f /usr/bin/deja-dup ]; then
+  read -p "Uninstall deja-dup? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R nomachine
+     sudo pacman -R deja-dup
    fi
 else
-  echo "Install nomachine?"
+  echo "Install deja-dup?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/nomachine-7.1.3-2-aarch64.pkg.tar.zst
-     sudo pacman -U nomachine-7.1.3-2-aarch64.pkg.tar.zst
+     sudo pacman -S deja-dup  || echo "Error installing deja-dup."
    fi
 fi
 
 }
 
-qjoypad () {
+
+dsmume () {
 
 echo
 
-if [ -f  /usr/bin/qjoypad  ]; then
-  read -p "Uninstall qjoypad? (y/n)]=> " answer 
+if [ -f /usr/bin/dsmume ]; then
+  read -p "Uninstall dsmume? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R qjoypad
+     sudo pacman -R dsmume
    fi
 else
-  echo "Install qjoypad?"
+  echo "Install dsmume?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/qjoypad-4.3.1-1-aarch64.pkg.tar.zst
-     sudo pacman -U qjoypad-4.3.1-1-aarch64.pkg.tar.zst
+     sudo pacman -S dsmume  || echo "Error installing dsmume."
    fi
 fi
 
 }
 
-multimc5 () {
+gnome-passwordsafe () {
 
 echo
 
-if [ -f  /usr/bin/multimc  ]; then
-  read -p "Uninstall multimc5? (y/n)]=> " answer 
+if [ -f /usr/bin/gnome-passwordsafe ]; then
+  read -p "Uninstall gnome-passwordsafe? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R multimc5
+     sudo pacman -R gnome-passwordsafe
    fi
 else
-  echo "Install multimc5?"
+  echo "Install gnome-passwordsafe?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/multimc5-0.6.11-2-aarch64.pkg.tar.zst
-     sudo pacman -U multimc5-0.6.11-2-aarch64.pkg.tar.zst
+     sudo pacman -S gnome-passwordsafe  || echo "Error installing gnome-passwordsafe."
    fi
 fi
 
 }
 
 
-argonone () {
+scummvm () {
 
 echo
 
-if [ -f  /usr/bin/argonone-cli   ]; then
-  read -p "Uninstall argonone? (y/n)]=> " answer 
+if [ -f /usr/bin/scummvm ]; then
+  read -p "Uninstall scummvm? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R argonone-c-git
+     sudo pacman -R scummvm
    fi
 else
-  echo "Install argonone?"
+  echo "Install scummvm?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/argonone-c-git-r37.b30b87d-2-aarch64.pkg.tar.zst
-     sudo pacman -U argonone-c-git-r37.b30b87d-2-aarch64.pkg.tar.zst
-     xdg-open https://gitlab.com/DarkElvenAngel/argononed
-
+     sudo pacman -S scummvm  || echo "Error installing scummvm."
    fi
 fi
 
 }
 
-antimicrox () {
+
+higan () {
 
 echo
 
-if [ -f  /usr/bin/antimicrox   ]; then
-  read -p "Uninstall antimicrox ? (y/n)]=> " answer 
+if [ -f /usr/bin/higan ]; then
+  read -p "Uninstall higan? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R antimicrox
+     sudo pacman -R higan
    fi
 else
-  echo "Install antimicrox?"
+  echo "Install higan?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/antimicrox-3.1.4-1-aarch64.pkg.tar.zst
-     sudo pacman -U antimicrox-3.1.4-1-aarch64.pkg.tar.zst
+     sudo pacman -S higan  || echo "Error installing higan."
    fi
 fi
 
-
 }
 
-ksnip () {
+
+mame () {
 
 echo
 
-if [ -f  /usr/bin/ksnip  ]; then
-  read -p "Uninstall ksnip ? (y/n)]=> " answer 
+if [ -f /usr/bin/mame ]; then
+  read -p "Uninstall mame? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R ksnip
+     sudo pacman -R mame
    fi
 else
-  echo "Install ksnip?"
+  echo "Install mame?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/ksnip-1.8.1-2-aarch64.pkg.tar.zst
-     sudo pacman -U ksnip-1.8.1-2-aarch64.pkg.tar.zst
+     sudo pacman -S mame  || echo "Error installing mame."
    fi
 fi
-
 
 }
 
 
-residualvm () {
+qmc2 () {
 
 echo
 
-if [ -f  /usr/bin/residualvm  ]; then
-  read -p "Uninstall ksnip ? (y/n)]=> " answer 
+if [ -f /usr/bin/qmc2 ]; then
+  read -p "Uninstall qmc2? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R residualvm
+     sudo pacman -R qmc2
    fi
 else
-  echo "Install residualvm?"
+  echo "Install qmc2?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/residualvm-0.3.1-4-aarch64.pkg.tar.zst
-     sudo pacman -U residualvm-0.3.1-4-aarch64.pkg.tar.zst
+     sudo pacman -S qmc2  || echo "Error installing qmc2."
    fi
 fi
 
-
 }
 
-anbox () {
+
+aircrackng2 () {
 
 echo
 
-if [ -f /usr/bin/anbox ]; then
-  read -p "Uninstall anbox? (y/n)]=> " answer 
+if [ -f /usr/bin/aircrackng2 ]; then
+  read -p "Uninstall aircrackng2? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R anbox-image-aarch64
-     sudo pacman -R anbox
+     sudo pacman -R aircrackng2
    fi
 else
-   echo "Install anbox (Android In a Box)?"
-   echo -e "Anbox may reduce system performance. \nYou can uninstall it by running this wizard again.\n"
-   read -p "Continue? (y/n)]=> " answer 
+  echo "Install aircrackng2?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -S anbox-image-aarch64 || echo "Error installing anbox."
+     sudo pacman -S aircrackng2  || echo "Error installing aircrackng2."
    fi
 fi
 
