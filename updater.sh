@@ -420,7 +420,7 @@ read -p "Which branch do you want to use? [s(stable)/u(unstable)]=> " answer
 if [ $answer = s ] || [ $answer = stable ]; then
   echo "Upgrading MFjaro using the stable branch";
   sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
-  sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
+  sudo pacman -Syyu --ignore=kodi,python-cairosvg,cairosvg || echo "sudo pacman -Syyu - Error";
   echo;
   sleep 5;
   
@@ -436,7 +436,7 @@ if [ $answer = s ] || [ $answer = stable ]; then
  elif [ $answer = u ] || [ $answer = unstable ]; then
   echo "Upgrading MFjaro using the unstable branch";
   sudo pacman-mirrors -aS unstable || echo "You are already using the unstable branch or the command can't be executed.";
-  sudo pacman -Syyu  || echo "sudo pacman -Syyu - Error";
+  sudo pacman -Syyu --ignore=kodi,python-cairosvg,cairosvg  || echo "sudo pacman -Syyu - Error";
   echo;
   sleep 5;
   
