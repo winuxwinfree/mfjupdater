@@ -316,6 +316,7 @@ echo "9)  Argon Case Fan Control."
 echo "10) Antimicro (Gamepad... mapping)."
 echo "11) Ksnip (Screenshot tool)."
 echo "12) Residual VM (LucasArts Games EMU)."
+echo "13) Tor-Browser (Surf the Internet anonymously)."
 echo ""
 echo "n) Next."
 echo "q) Return to the main menu."
@@ -351,6 +352,8 @@ antimicrox;;
 ksnip;;
 12)
 residualvm;;
+13)
+tor;;
 
 n)
 addapps2;;
@@ -1321,12 +1324,11 @@ echo " __
 |  (_||_(_| )(-_)  (_|| )(_|  (_|(_|(_|    (_)| )_) 
 ---------------------------------------------------------       "
 echo "a) Repair the most common problems."
-echo "b) Reinstall tor-browser."
-echo "c) Download wine apps and games."
-echo "d) Pulseaudio/alsa(better sound) switcher."
-echo "e) Add-ons."
+echo "b) Download wine apps and games."
+echo "c) Pulseaudio/alsa(better sound) switcher."
+echo "d) Add-ons."
 echo ""
-echo -n "[Type an option: 1,2,a,b,c,d,e and then press INTRO]=> "
+echo -n "[Type an option: 1,2,a,b,c,d and then press INTRO]=> "
 
 
 read opcion
@@ -1388,19 +1390,16 @@ a)
 
 patch;;
 
+
 b) 
-
-tor;;
-
-c) 
 
 wineapps;;
 
-d)
+c)
 
 audiofix;;
 
-e)
+d)
 
 addapps;;
 
