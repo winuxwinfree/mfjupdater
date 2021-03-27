@@ -401,10 +401,10 @@ echo "8)  Scummvm (Adventure Games Emulator)."
 echo "9)  Higan (Multi Emulator)."
 echo "10) Mame (Mame Emulator)."
 echo "11) Qmc2 (Multiple Arcade Machine Emulator)."
-echo "12) Aircrack-ng (Network security)."
+echo "12) Duckstation (PS1 Emulator)."
+echo "13) Aircrack-ng (Network security)."
 echo ""
-echo "p) Previous."
-echo "n) Next."
+echo "p) Previous |  n) Next."
 echo "q) Return to the main menu."
 echo ""
 echo -n "[Type an option and then press INTRO]=> "
@@ -438,6 +438,8 @@ mame;;
 qmc2;;
 12)
 aircrackng2;;
+13)
+duckstation;;
 
 p)
 addapps;;
@@ -563,6 +565,27 @@ fi
 
 }
 
+duckstation () {
+
+echo
+
+if [ -f /usr/bin/duckstation-qt ]; then
+  read -p "Uninstall Duckstation? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R duckstation-git
+   fi
+else
+   echo "Install Duckstation?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/duckstation-git-preview.r4181.e9aab649-1-aarch64.pkg.tar.zst
+     sudo pacman -U duckstation-git-preview.r4181.e9aab649-1-aarch64.pkg.tar.zst || echo "Error installing Duckstation."
+   fi
+fi
+
+
+}
 
 moonlight () {
 
