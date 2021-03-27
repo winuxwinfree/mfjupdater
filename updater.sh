@@ -380,18 +380,18 @@ echo "
 ╩ ╩╩  ╩  ╚═╝
 ==============
 "
-echo "1)  Gbrainy. "
-echo "2)  Gnome Nibbles."
-echo "3)  Hatari."
-echo "4)  Stella."
-echo "5)  Deja-Dup."
-echo "6)  Dsmume."
-echo "7)  Gnome-passwordsafe."
-echo "8)  Scummvm."
-echo "9)  Higan."
-echo "10) Mame."
-echo "11) Qmc2."
-echo "12) Aircrack-ng."
+echo "1)  Gbrainy (mind trainer). "
+echo "2)  Gnome Nibbles (worm around a maze game)."
+echo "3)  Hatari (Atari Emulator)."
+echo "4)  Stella (Atari 2600 VCS emulator)."
+echo "5)  Deja-Dup (Simple backup tool)."
+echo "6)  Dsmume (NDS Emulator)."
+echo "7)  Gnome-passwordsafe (Password Manager)."
+echo "8)  Scummvm (Adventure Games Emulator)."
+echo "9)  Higan (Multi Emulator)."
+echo "10) Mame (Mame Emulator)."
+echo "11) Qmc2 (Multiple Arcade Machine Emulator)."
+echo "12) Aircrack-ng (Network security)."
 echo ""
 echo "p) Previous."
 echo "q) Return to the main menu."
@@ -412,11 +412,11 @@ hatari;;
 4)
 stella;;
 5)
-deja-dup;;
+dejadup;;
 6)
-dsmume;;
+desmume;;
 7)
-gnome-passwordsafe;;
+gnomepasswordsafe;;
 8)
 scummvm;;
 9)
@@ -472,17 +472,17 @@ nibbles () {
 
 echo
 
-if [ -f /usr/bin/nibbles ]; then
+if [ -f /usr/bin/gnome-nibbles ]; then
   read -p "Uninstall nibbles? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R nibbles
+     sudo pacman -R gnome-nibbles
    fi
 else
    echo "Install nibbles?"
    echo "You can uninstall it by running this wizard again."
    read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -S nibbles || echo "Error installing nibbles."
+     sudo pacman -S gnome-nibbles || echo "Error installing nibbles."
    fi
 fi
 
@@ -530,7 +530,7 @@ fi
 }
 
 
-deja-dup () {
+dejadup () {
 
 echo
 
@@ -551,27 +551,27 @@ fi
 }
 
 
-dsmume () {
+desmume () {
 
 echo
 
-if [ -f /usr/bin/dsmume ]; then
-  read -p "Uninstall dsmume? (y/n)]=> " answer 
+if [ -f /usr/share/applications/desmume.desktop ]; then
+  read -p "Uninstall desmume? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R dsmume
+     sudo pacman -R desmume
    fi
 else
-  echo "Install dsmume?"
+  echo "Install desmume?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -S dsmume  || echo "Error installing dsmume."
+     sudo pacman -S desmume  || echo "Error installing desmume."
    fi
 fi
 
 }
 
-gnome-passwordsafe () {
+gnomepasswordsafe () {
 
 echo
 
@@ -680,17 +680,18 @@ aircrackng2 () {
 
 echo
 
-if [ -f /usr/bin/aircrackng2 ]; then
+if [ -f /usr/bin/aircrack-ng ]; then
   read -p "Uninstall aircrackng2? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R aircrackng2
+     sudo pacman -R aircrack-ng
    fi
 else
   echo "Install aircrackng2?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -S aircrackng2  || echo "Error installing aircrackng2."
+     sudo pacman -S aircrack-ng  || echo "Error installing aircrackng2."
+     xdg-open https://www.aircrack-ng.org/doku.php?id=newbie_guide
    fi
 fi
 
