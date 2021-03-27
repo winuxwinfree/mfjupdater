@@ -230,7 +230,7 @@ patch () {
 
  wget https://sourceforge.net/projects/tor-browser-ports/files/10.0.14-arm64-alsa/tor-browser-linux-arm64-10.0.14_en-US.tar.xz || error "Failed to download!"
 
- tar -xf ~/tor.tar.xz || error "Failed to extract!"
+ tar -xf ~/tor-browser-linux-arm64-10.0.14_en-US.tar.xz || error "Failed to extract!"
 
  echo "[Desktop Entry]
  Type=Application
@@ -244,7 +244,7 @@ patch () {
  StartupWMClass=Tor Browser" > ~/.local/share/applications/tor.desktop
 
  rm $HOME/.local/share/applications/torinstall.desktop
-
+ xdg-open https://sourceforge.net/projects/tor-browser-ports/files/
  echo Done
  sleep 10
 
