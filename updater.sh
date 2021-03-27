@@ -310,7 +310,10 @@ echo "2) Xscreensaver."
 echo "3) Samba/CIFS (Windows Network)."
 echo "4) Anbox (android emulator)."
 echo "5) XDMAN (Xtreme Download Manager)."
-echo "5) Nomachine (Remote Desktop)."
+echo "6) Nomachine (Remote Desktop)."
+echo "7) Qjoypad (Gamepad... mapping)."
+echo "8) Multimc5 (Minecraft Launcher)."
+echo "9) Argon Case Fan Control."
 echo ""
 echo "q) Return to the main menu."
 echo ""
@@ -329,6 +332,16 @@ xscreensaver;;
 smb;;
 4)
 anbox;;
+5)
+xdman;;
+6)
+nomachine;;
+7)
+qjoypad;;
+8)
+multimc5;;
+9)
+argon;;
 
 q) 
 clear;
@@ -453,7 +466,7 @@ fi
 
 }
 
-nomachine () {
+qjoypad () {
 
 echo
 
@@ -473,6 +486,50 @@ else
 fi
 
 }
+
+multimc5 () {
+
+echo
+
+if [ -f  /usr/bin/multimc  ]; then
+  read -p "Uninstall multimc5? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R multimc5
+   fi
+else
+  echo "Install multimc5?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/multimc5-0.6.11-2-aarch64.pkg.tar.zst
+     sudo pacman -U multimc5-0.6.11-2-aarch64.pkg.tar.zst
+   fi
+fi
+
+}
+
+
+multimc5 () {
+
+echo
+
+if [ -f  /usr/bin/argonone-cli   ]; then
+  read -p "Uninstall argonone? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R argonone
+   fi
+else
+  echo "Install argonone?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/argonone-c-git-r37.b30b87d-2-aarch64.pkg.tar.zst
+     sudo pacman -U argonone-c-git-r37.b30b87d-2-aarch64.pkg.tar.zst
+   fi
+fi
+
+}
+
 
 anbox () {
 
