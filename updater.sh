@@ -571,7 +571,7 @@ echo
 if [ -f /usr/bin/moonlight ]; then
   read -p "Uninstall Moonlight? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R moonlight
+     sudo pacman -R moonlight-qt
    fi
 else
    echo "Install Moonlight?"
@@ -593,7 +593,7 @@ echo
 if [ -f /usr/bin/vscodium ]; then
   read -p "Uninstall Vscodium? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R vscodium
+     sudo pacman -R vscodium-bin
    fi
 else
    echo "Install VScodium?"
