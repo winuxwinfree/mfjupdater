@@ -5,7 +5,6 @@
 
 clear
 cd
-rm -f updater.sh*
 
 #MFjaro patch function.
 
@@ -316,6 +315,7 @@ echo "8)  Multimc5 (Minecraft Launcher)."
 echo "9)  Argon Case Fan Control."
 echo "10) Antimicro (Gamepad... mapping)."
 echo "11) Ksnip (Screenshot tool)."
+echo "12) Residual VM (LucasArts Games EMU)."
 echo ""
 echo "q) Return to the main menu."
 echo ""
@@ -348,6 +348,8 @@ argonone;;
 antimicrox;;
 11)
 ksnip;;
+12)
+residualvm;;
 
 q) 
 clear;
@@ -531,8 +533,12 @@ else
    if [ $answer = y ] || [ $answer = Y ]; then
      wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/argonone-c-git-r37.b30b87d-2-aarch64.pkg.tar.zst
      sudo pacman -U argonone-c-git-r37.b30b87d-2-aarch64.pkg.tar.zst
+     xdg-open https://gitlab.com/DarkElvenAngel/argononed
+
    fi
 fi
+
+}
 
 antimicrox () {
 
@@ -578,6 +584,28 @@ fi
 
 }
 
+
+residualvm () {
+
+echo
+
+if [ -f  /usr/bin/residualvm  ]; then
+  read -p "Uninstall ksnip ? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R residualvm
+   fi
+else
+  echo "Install residualvm?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/residualvm-0.3.1-4-aarch64.pkg.tar.zst
+     sudo pacman -U residualvm-0.3.1-4-aarch64.pkg.tar.zst
+   fi
+fi
+
+
+}
 
 anbox () {
 
