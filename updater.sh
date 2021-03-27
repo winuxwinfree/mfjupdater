@@ -295,11 +295,30 @@ fi
 
 addapps () {
 
+#Fenix Updater -cli version- main menu.
+
+while :
+  do
+
+echo "1) Simplescreenrecorder. "
+echo "2) Xscreensaver."
+echo "2) Samba."
+echo "2) Anbox."
+echo "2) xscreensaver."
+echo "2) xscreensaver."
+echo "2) xscreensaver."
+echo "2) xscreensaver."
+echo "2) xscreensaver."
+echo ""
+echo -n "[Type an option and then press INTRO]=> "
 
 
+read opcion
+case $opcion in
+
+
+1) 
 #simplescreen recorder
-
-
 echo
 
 if [ -f /usr/bin/simplescreenrecorder ]; then
@@ -316,8 +335,8 @@ else
    fi
 fi
 
+2)
 #xscreensaver
-
 echo
 
 if [ -f /usr/bin/xscreensaver ]; then
@@ -334,10 +353,8 @@ else
    fi
 fi
 
-
+3)
 #smb
-
-
 echo
 
 if [ -f /usr/bin/smbd ]; then
@@ -356,8 +373,28 @@ else
    fi
 fi
 
-#anbox
+4)
+#smb
+echo
 
+if [ -f /usr/bin/smbd ]; then
+  read -p "Uninstall samba? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R manjaro-settings-samba
+     sudo pacman -R samba 
+   fi
+else
+  echo "Install samba?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S samba  || echo "Error installing samba."
+     sudo pacman -S manjaro-settings-samba || echo "Error installing manjaro-settings-samba."
+   fi
+fi
+
+5)
+#anbox
 echo
 
 if [ -f /usr/bin/anbox ]; then
@@ -368,13 +405,26 @@ if [ -f /usr/bin/anbox ]; then
    fi
 else
    echo "Install anbox (Android In a Box)?"
-   echo -e "\nAnbox may reduce system performance. \nYou can uninstall it by running this wizard again.\n"
+   echo -e "Anbox may reduce system performance. \nYou can uninstall it by running this wizard again.\n"
    read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
      sudo pacman -S anbox-image-aarch64 || echo "Error installing anbox."
    fi
 fi
 
+q) 
+
+echo "Done.";
+sleep 3; exit 1;;
+
+*)
+
+echo "$opc invalid option ";
+echo "Press a key to continue.";
+read foo;;
+
+ esac
+done
 
 }
 
