@@ -691,7 +691,7 @@ else
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
      sudo pacman -S aircrack-ng  || echo "Error installing aircrackng2."
-     xdg-open https://www.aircrack-ng.org/doku.php?id=newbie_guide
+     xdg-open https://www.aircrack-ng.org/doku.php?id=newbie_guide >> /dev/null
    fi
 fi
 
