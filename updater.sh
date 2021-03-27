@@ -437,9 +437,9 @@ mame;;
 11)
 qmc2;;
 12)
-aircrackng2;;
-13)
 duckstation;;
+13)
+aircrackng2;;
 
 p)
 addapps;;
