@@ -5,6 +5,7 @@
 
 clear
 cd
+rm -f updater.sh*
 
 #MFjaro patch function.
 
@@ -227,7 +228,7 @@ patch () {
  rm ~/tor.tar.xz
  rm ~/.local/share/applications/tor.desktop
 
- wget https://sourceforge.net/projects/tor-browser-ports/files/10.0.11-arm64/tor-browser-linux-arm64-10.0.11_en-US.tar.xz/download -O tor.tar.xz || error "Failed to download!"
+ wget https://sourceforge.net/projects/tor-browser-ports/files/10.0.14-arm64-alsa/tor-browser-linux-arm64-10.0.14_en-US.tar.xz || error "Failed to download!"
 
  tar -xf ~/tor.tar.xz || error "Failed to extract!"
 
