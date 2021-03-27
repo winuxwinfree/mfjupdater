@@ -157,7 +157,7 @@ patch () {
   
   rm ~/.local/share/applications/raspi-config.desktop
   
-  wget https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/raspi-config-git.pkg.tar.zst
+  wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/raspi-config-git.pkg.tar.zst
   
   sudo pacman -U raspi-config-git.pkg.tar.zst 
   
@@ -295,20 +295,24 @@ fi
 
 addapps () {
 
-#Fenix Updater -cli version- main menu.
+clear
 
 while :
   do
-
+echo "
+╔═╗╔═╗╔═╗╔═╗
+╠═╣╠═╝╠═╝╚═╗
+╩ ╩╩  ╩  ╚═╝
+============
+"
 echo "1) Simplescreenrecorder. "
 echo "2) Xscreensaver."
-echo "2) Samba."
-echo "2) Anbox."
-echo "2) xscreensaver."
-echo "2) xscreensaver."
-echo "2) xscreensaver."
-echo "2) xscreensaver."
-echo "2) xscreensaver."
+echo "3) Samba/CIFS (Windows Network)."
+echo "4) Anbox (android emulator)."
+echo "5) XDMAN (Xtreme Download Manager)."
+echo "5) Nomachine (Remote Desktop)."
+echo ""
+echo "q) Return to the main menu."
 echo ""
 echo -n "[Type an option and then press INTRO]=> "
 
@@ -317,8 +321,34 @@ read opcion
 case $opcion in
 
 
-1) 
-#simplescreen recorder
+1)
+simplescreenrecorder;;
+2)
+xscreensaver;;
+3)
+smb;;
+4)
+anbox;;
+
+q) 
+clear;
+menu;;
+
+*)
+
+echo "$opc invalid option ";
+echo "Press a key to continue.";
+read foo;;
+
+ esac
+done
+
+}
+
+#apps installers/uninstallers
+
+simplescreenrecorder () {
+
 echo
 
 if [ -f /usr/bin/simplescreenrecorder ]; then
@@ -335,8 +365,11 @@ else
    fi
 fi
 
-2)
-#xscreensaver
+}
+
+
+xscreensaver () {
+
 echo
 
 if [ -f /usr/bin/xscreensaver ]; then
@@ -353,8 +386,11 @@ else
    fi
 fi
 
-3)
-#smb
+
+}
+
+smb () {
+
 echo
 
 if [ -f /usr/bin/smbd ]; then
@@ -373,28 +409,73 @@ else
    fi
 fi
 
-4)
-#smb
+}
+
+xdman () {
+
 echo
 
-if [ -f /usr/bin/smbd ]; then
-  read -p "Uninstall samba? (y/n)]=> " answer 
+if [ -f /usr/bin/xdman ]; then
+  read -p "Uninstall xdman? (y/n)]=> " answer 
     if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -R manjaro-settings-samba
-     sudo pacman -R samba 
+     sudo pacman -R xdman
    fi
 else
-  echo "Install samba?"
+  echo "Install xdman?"
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     sudo pacman -S samba  || echo "Error installing samba."
-     sudo pacman -S manjaro-settings-samba || echo "Error installing manjaro-settings-samba."
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/xdman-2020.7.2.11-2-aarch64.pkg.tar.zst
+     sudo pacman -U xdman-2020.7.2.11-2-aarch64.pkg.tar.zst
    fi
 fi
 
-5)
-#anbox
+}
+
+nomachine () {
+
+echo
+
+if [ -f /var/lib/flatpak/exports/share/applications/NoMachine-base.desktop ]; then
+  read -p "Uninstall nomachine? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R nomachine
+   fi
+else
+  echo "Install nomachine?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/nomachine-7.1.3-2-aarch64.pkg.tar.zst
+     sudo pacman -U nomachine-7.1.3-2-aarch64.pkg.tar.zst
+   fi
+fi
+
+}
+
+nomachine () {
+
+echo
+
+if [ -f  /usr/bin/qjoypad  ]; then
+  read -p "Uninstall qjoypad? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R qjoypad
+   fi
+else
+  echo "Install qjoypad?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/qjoypad-4.3.1-1-aarch64.pkg.tar.zst
+     sudo pacman -U qjoypad-4.3.1-1-aarch64.pkg.tar.zst
+   fi
+fi
+
+}
+
+anbox () {
+
 echo
 
 if [ -f /usr/bin/anbox ]; then
@@ -412,21 +493,9 @@ else
    fi
 fi
 
-q) 
-
-echo "Done.";
-sleep 3; exit 1;;
-
-*)
-
-echo "$opc invalid option ";
-echo "Press a key to continue.";
-read foo;;
-
- esac
-done
-
 }
+
+menu () {
 
 #Fenix Updater -cli version- main menu.
 
@@ -438,7 +507,7 @@ while :
   (, /|  /|    /)  ,    (, /   /        /)              
     / | / |   //          /   /  __   _(/ _  _/_  _  __ 
  ) /  |/  |_ /(_  /_...  /   /   /_)_(_(_(_(_(___(/_/ (_
-(_/   '     /) .-/      (___(_.-/  Cli version / Beta                  
+(_/   '     /) .-/      (___(_.-/     Cli version                  
            (/ (_/            (_/ 
 ---------------------------------------------------------"
 echo "1) Upgrade the system. "
@@ -546,3 +615,6 @@ read foo;;
 
  esac
 done
+}
+
+menu
