@@ -351,8 +351,10 @@ antimicrox;;
 ksnip;;
 12)
 residualvm;;
+
 n)
 addapps2;;
+
 q) 
 clear;
 menu;;
@@ -394,6 +396,7 @@ echo "11) Qmc2 (Multiple Arcade Machine Emulator)."
 echo "12) Aircrack-ng (Network security)."
 echo ""
 echo "p) Previous."
+echo "n) Next."
 echo "q) Return to the main menu."
 echo ""
 echo -n "[Type an option and then press INTRO]=> "
@@ -427,8 +430,90 @@ mame;;
 qmc2;;
 12)
 aircrackng2;;
+
 p)
 addapps;;
+
+n)
+addapps3;;
+
+q) 
+clear;
+menu;;
+
+*)
+
+echo "$opc invalid option ";
+echo "Press a key to continue.";
+read foo;;
+
+ esac
+done
+
+}
+
+addapps3 () {
+
+clear
+
+while :
+  do
+echo "
+╔═╗╔═╗╔═╗╔═╗
+╠═╣╠═╝╠═╝╚═╗ 3
+╩ ╩╩  ╩  ╚═╝
+==============
+"
+echo "1)  Wireshark (Network Security Tool). "
+echo "2)  Nextcloud (Desktop synchronization client)."
+echo "3)  Audacious (Audio Player)."
+echo "4)  Arduino IDE."
+echo "5)  Cura (3D Software)."
+echo "6)  Prusa-Slicer (G-code generator for 3D printers)."
+echo "7)  KeePassXC (Password Manager)."
+echo "8)  Libre Office (Office Suite)."
+echo "9)  LibreCAD (A proffesional CAD system)."
+echo "10) Gimp (Create/edit photographs)."
+echo "11) OpenShot (Video Editor)."
+echo "12) Audacity (Record and edit audio files)."
+echo ""
+echo "p) Previous."
+echo "q) Return to the main menu."
+echo ""
+echo -n "[Type an option and then press INTRO]=> "
+
+
+read opcion
+case $opcion in
+
+
+1)
+wireshark;;
+2)
+nextcloud;;
+3)
+audacious;;
+4)
+arduinoide;;
+5)
+cura;;
+6)
+prusa;;
+7)
+keepassxc;;
+8)
+libreoffice;;
+9)
+librecad;;
+10)
+gimp;;
+11)
+openshot;;
+12)
+audacity;;
+
+p)
+addapps2;;
 
 q) 
 clear;
@@ -446,6 +531,260 @@ done
 }
 
 #apps installers/uninstallers
+
+wireshark () {
+
+echo
+
+if [ -f /usr/bin/wireshark ]; then
+  read -p "Uninstall Wireshark? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R wireshark-qt
+   fi
+else
+  echo "Install wireshark?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S wireshark-qt || echo "Error installing wireshark."
+   fi
+fi
+
+}
+
+
+nextcloud () {
+
+echo
+
+if [ -f /usr/bin/nextcloud ]; then
+  read -p "Uninstall NextCloud? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R nextcloud
+   fi
+else
+   echo "Install NextCloud?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S nextcloud || echo "Error installing nextcloud."
+   fi
+fi
+
+
+}
+
+audacious () {
+
+echo
+
+if [ -f /usr/bin/audacious ]; then
+  read -p "Uninstall audacious? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R audacious
+   fi
+else
+   echo "Install audacious?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S audacious || echo "Error installing audacious."
+   fi
+fi
+
+
+}
+
+arduinoide () {
+
+echo
+
+if [ -f /usr/bin/arduino ]; then
+  read -p "Uninstall arduinoide? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R arduino
+   fi
+else
+   echo "Install arduinoide?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S arduino || echo "Error installing arduinoide."
+   fi
+fi
+
+
+}
+
+cura () {
+
+echo
+
+if [ -f /usr/bin/cura ]; then
+  read -p "Uninstall cura? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R cura
+   fi
+else
+   echo "Install cura?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S cura || echo "Error installing cura."
+   fi
+fi
+
+
+}
+
+prusa () {
+
+echo
+
+if [ -f /usr/bin/prusa-slicer ]; then
+  read -p "Uninstall prusa-slicer? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R prusa-slicer
+
+   fi
+else
+   echo "Install prusa?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S prusa-slicer || echo "Error installing prusa-slicer."
+   fi
+fi
+
+
+}
+
+keepassxc () {
+
+echo
+
+if [ -f /usr/bin/keepassxc ]; then
+  read -p "Uninstall keepassxc? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R keepassxc
+   fi
+else
+   echo "Install keepassxc?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S keepassxc || echo "Error installing keepassxc."
+   fi
+fi
+
+
+}
+
+libreoffice () {
+
+echo
+
+if [ -f /usr/bin/libreoffice ]; then
+  read -p "Uninstall libreoffice? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R libreoffice
+   fi
+else
+   echo "Install libreoffice?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S libreoffice || echo "Error installing libreoffice."
+   fi
+fi
+
+
+}
+
+librecad () {
+
+echo
+
+if [ -f /usr/bin/librecad ]; then
+  read -p "Uninstall librecad? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R librecad
+   fi
+else
+   echo "Install librecad?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S librecad || echo "Error installing librecad."
+   fi
+fi
+
+
+}
+
+gimp () {
+
+echo
+
+if [ -f /usr/bin/gimp ]; then
+  read -p "Uninstall gimp? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R gimp
+   fi
+else
+   echo "Install gimp?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S gimp || echo "Error installing gimp."
+   fi
+fi
+
+
+}
+
+openshot () {
+
+echo
+
+if [ -f /usr/bin/openshot-qt ]; then
+  read -p "Uninstall openshot? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R openshot
+   fi
+else
+   echo "Install openshot?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S openshot || echo "Error installing openshot."
+   fi
+fi
+
+
+}
+
+audacity () {
+
+echo
+
+if [ -f /usr/bin/audacity ]; then
+  read -p "Uninstall audacity? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R audacity
+   fi
+else
+   echo "Install audacity?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S audacity || echo "Error installing audacity."
+   fi
+fi
+
+
+}
+
 
 simplescreenrecorder () {
 
