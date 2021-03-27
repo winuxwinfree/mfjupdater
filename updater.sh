@@ -32,6 +32,7 @@ patch () {
 
   echo ""
   
+   
   #alsa audio fix
   
   echo "Step 1, installing alsa."
@@ -1343,6 +1344,7 @@ read -p "Which branch do you want to use? [s(stable)/u(unstable)]=> " answer
 #stable
 if [ $answer = s ] || [ $answer = stable ]; then
   echo "Upgrading MFjaro using the stable branch";
+  ignorepkg;
   sudo pacman-mirrors -aS stable || echo "You are already using the stable branch or the command can't be executed.";
   sudo pacman -Syyu --ignore=kodi,python-cairosvg,cairosvg || echo "sudo pacman -Syyu - Error";
   echo;
@@ -1359,6 +1361,7 @@ if [ $answer = s ] || [ $answer = stable ]; then
  #unstable
  elif [ $answer = u ] || [ $answer = unstable ]; then
   echo "Upgrading MFjaro using the unstable branch";
+  ignorepkg;
   sudo pacman-mirrors -aS unstable || echo "You are already using the unstable branch or the command can't be executed.";
   sudo pacman -Syyu --ignore=kodi,python-cairosvg,cairosvg  || echo "sudo pacman -Syyu - Error";
   echo;
@@ -1418,5 +1421,15 @@ read foo;;
  esac
 done
 }
+
+ignorepkg () {
+
+#ignore pkg
+
+sudo sed -i ':a;N;$!ba; s/#IgnorePkg   =/IgnorePkg   =*cairosvg*/1' /etc/pacman.conf || echo "Error replacing #IgnorePkg with IgnorePkg... in /etc/pacman.conf"
+sudo sed -i ':a;N;$!ba; s/#IgnorePkg   =/IgnorePkg   =kodi*/1' /etc/pacman.conf || echo "Error replacing #IgnorePkg with IgnorePkg... in /etc/pacman.conf"
+
+}
+
 
 menu
