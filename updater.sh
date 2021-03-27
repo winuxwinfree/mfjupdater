@@ -447,6 +447,267 @@ done
 
 #apps installers/uninstallers
 
+simplescreenrecorder () {
+
+echo
+
+if [ -f /usr/bin/simplescreenrecorder ]; then
+  read -p "Uninstall simplescreenrecorder? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R simplescreenrecorder
+   fi
+else
+  echo "Install simplescreenrecorder?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S simplescreenrecorder || echo "Error installing simplescreenrecorder."
+   fi
+fi
+
+}
+
+
+xscreensaver () {
+
+echo
+
+if [ -f /usr/bin/xscreensaver ]; then
+  read -p "Uninstall xscreensaver? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R xscreensaver
+   fi
+else
+   echo "Install xscreensaver?"
+   echo "You can uninstall it by running this wizard again."
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S xscreensaver || echo "Error installing xscreensaver."
+   fi
+fi
+
+
+}
+
+smb () {
+
+echo
+
+if [ -f /usr/bin/smbd ]; then
+  read -p "Uninstall samba? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R manjaro-settings-samba
+     sudo pacman -R samba 
+   fi
+else
+  echo "Install samba?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S samba  || echo "Error installing samba."
+     sudo pacman -S manjaro-settings-samba || echo "Error installing manjaro-settings-samba."
+   fi
+fi
+
+}
+
+xdman () {
+
+echo
+
+if [ -f /usr/bin/xdman ]; then
+  read -p "Uninstall xdman? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R xdman
+   fi
+else
+  echo "Install xdman?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/xdman-2020.7.2.11-2-aarch64.pkg.tar.zst
+     sudo pacman -U xdman-2020.7.2.11-2-aarch64.pkg.tar.zst
+   fi
+fi
+
+}
+
+nomachine () {
+
+echo
+
+if [ -f /var/lib/flatpak/exports/share/applications/NoMachine-base.desktop ]; then
+  read -p "Uninstall nomachine? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R nomachine
+   fi
+else
+  echo "Install nomachine?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/nomachine-7.1.3-2-aarch64.pkg.tar.zst
+     sudo pacman -U nomachine-7.1.3-2-aarch64.pkg.tar.zst
+   fi
+fi
+
+}
+
+qjoypad () {
+
+echo
+
+if [ -f  /usr/bin/qjoypad  ]; then
+  read -p "Uninstall qjoypad? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R qjoypad
+   fi
+else
+  echo "Install qjoypad?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/qjoypad-4.3.1-1-aarch64.pkg.tar.zst
+     sudo pacman -U qjoypad-4.3.1-1-aarch64.pkg.tar.zst
+   fi
+fi
+
+}
+
+multimc5 () {
+
+echo
+
+if [ -f  /usr/bin/multimc  ]; then
+  read -p "Uninstall multimc5? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R multimc5
+   fi
+else
+  echo "Install multimc5?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/multimc5-0.6.11-2-aarch64.pkg.tar.zst
+     sudo pacman -U multimc5-0.6.11-2-aarch64.pkg.tar.zst
+   fi
+fi
+
+}
+
+
+argonone () {
+
+echo
+
+if [ -f  /usr/bin/argonone-cli   ]; then
+  read -p "Uninstall argonone? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R argonone-c-git
+   fi
+else
+  echo "Install argonone?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/argonone-c-git-r37.b30b87d-2-aarch64.pkg.tar.zst
+     sudo pacman -U argonone-c-git-r37.b30b87d-2-aarch64.pkg.tar.zst
+     xdg-open https://gitlab.com/DarkElvenAngel/argononed
+
+   fi
+fi
+
+}
+
+antimicrox () {
+
+echo
+
+if [ -f  /usr/bin/antimicrox   ]; then
+  read -p "Uninstall antimicrox ? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R antimicrox
+   fi
+else
+  echo "Install antimicrox?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/antimicrox-3.1.4-1-aarch64.pkg.tar.zst
+     sudo pacman -U antimicrox-3.1.4-1-aarch64.pkg.tar.zst
+   fi
+fi
+
+
+}
+
+ksnip () {
+
+echo
+
+if [ -f  /usr/bin/ksnip  ]; then
+  read -p "Uninstall ksnip ? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R ksnip
+   fi
+else
+  echo "Install ksnip?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/ksnip-1.8.1-2-aarch64.pkg.tar.zst
+     sudo pacman -U ksnip-1.8.1-2-aarch64.pkg.tar.zst
+   fi
+fi
+
+
+}
+
+
+residualvm () {
+
+echo
+
+if [ -f  /usr/bin/residualvm  ]; then
+  read -p "Uninstall ksnip ? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R residualvm
+   fi
+else
+  echo "Install residualvm?"
+  echo "You can uninstall it by running this wizard again."
+  read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/residualvm-0.3.1-4-aarch64.pkg.tar.zst
+     sudo pacman -U residualvm-0.3.1-4-aarch64.pkg.tar.zst
+   fi
+fi
+
+
+}
+
+anbox () {
+
+echo
+
+if [ -f /usr/bin/anbox ]; then
+  read -p "Uninstall anbox? (y/n)]=> " answer 
+    if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -R anbox-image-aarch64
+     sudo pacman -R anbox
+   fi
+else
+   echo "Install anbox (Android In a Box)?"
+   echo -e "Anbox may reduce system performance. \nYou can uninstall it by running this wizard again.\n"
+   read -p "Continue? (y/n)]=> " answer 
+   if [ $answer = y ] || [ $answer = Y ]; then
+     sudo pacman -S anbox-image-aarch64 || echo "Error installing anbox."
+   fi
+fi
+
+}
+
+
 gbrainy () {
 
 echo
