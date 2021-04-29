@@ -223,11 +223,6 @@ patch () {
  cd
  DIRECTORY="$(dirname "$(dirname "$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )")")"
 
- function error {
-   echo -e "\\e[91m$1\\e[39m"
-   exit 1
- }
-
  rm -r ~/tor-browser_en-US 
  rm ~/tor.tar.xz
  rm ~/.local/share/applications/tor.desktop
