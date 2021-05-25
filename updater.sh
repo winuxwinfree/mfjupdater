@@ -158,7 +158,7 @@ patch () {
   
   rm ~/.local/share/applications/raspi-config.desktop
   
-  wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/raspi-config-git.pkg.tar.zst
+  wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux_based/pi/raspi-config-git.pkg.tar.zst
   
   sudo pacman -U raspi-config-git.pkg.tar.zst 
   
@@ -574,7 +574,7 @@ else
    echo "You can uninstall it by running this wizard again."
    read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/duckstation-git-preview.r4181.e9aab649-1-aarch64.pkg.tar.zst
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux_based/pi/duckstation-git-preview.r4181.e9aab649-1-aarch64.pkg.tar.zst
      sudo pacman -U duckstation-git-preview.r4181.e9aab649-1-aarch64.pkg.tar.zst || echo "Error installing Duckstation."
    fi
 fi
@@ -596,7 +596,7 @@ else
    echo "You can uninstall it by running this wizard again."
    read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/moonlight-qt-3.1.0-1-aarch64.pkg.tar.zst
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux_based/pi/moonlight-qt-3.1.0-1-aarch64.pkg.tar.zst
      sudo pacman -U moonlight-qt-3.1.0-1-aarch64.pkg.tar.zst || echo "Error installing Moonlight."
    fi
 fi
@@ -618,7 +618,7 @@ else
    echo "You can uninstall it by running this wizard again."
    read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/vscodium-bin-1.54.3-1-aarch64.pkg.tar.zst
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux_based/pi/vscodium-bin-1.54.3-1-aarch64.pkg.tar.zst
      sudo pacman -U vscodium-bin-1.54.3-1-aarch64.pkg.tar.zst || echo "Error installing vscodium."
    fi
 fi
@@ -916,7 +916,7 @@ else
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/xdman-2020.7.2.11-2-aarch64.pkg.tar.zst
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux_based/pi/xdman-2020.7.2.11-2-aarch64.pkg.tar.zst
      sudo pacman -U xdman-2020.7.2.11-2-aarch64.pkg.tar.zst
    fi
 fi
@@ -937,7 +937,7 @@ else
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/nomachine-7.1.3-2-aarch64.pkg.tar.zst
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux_based/pi/nomachine-7.1.3-2-aarch64.pkg.tar.zst
      sudo pacman -U nomachine-7.1.3-2-aarch64.pkg.tar.zst
    fi
 fi
@@ -958,7 +958,7 @@ else
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/qjoypad-4.3.1-1-aarch64.pkg.tar.zst
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux_based/pi/qjoypad-4.3.1-1-aarch64.pkg.tar.zst
      sudo pacman -U qjoypad-4.3.1-1-aarch64.pkg.tar.zst
    fi
 fi
@@ -979,7 +979,7 @@ else
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/multimc5-0.6.11-2-aarch64.pkg.tar.zst
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux_based/pi/multimc5-0.6.11-2-aarch64.pkg.tar.zst
      sudo pacman -U multimc5-0.6.11-2-aarch64.pkg.tar.zst
    fi
 fi
@@ -1001,7 +1001,7 @@ else
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/argonone-c-git-r37.b30b87d-2-aarch64.pkg.tar.zst
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux_based/pi/argonone-c-git-r37.b30b87d-2-aarch64.pkg.tar.zst
      sudo pacman -U argonone-c-git-r37.b30b87d-2-aarch64.pkg.tar.zst
      xdg-open https://gitlab.com/DarkElvenAngel/argononed >> /dev/null
 
@@ -1024,7 +1024,7 @@ else
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/antimicrox-3.1.4-1-aarch64.pkg.tar.zst
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux_based/pi/antimicrox-3.1.4-1-aarch64.pkg.tar.zst
      sudo pacman -U antimicrox-3.1.4-1-aarch64.pkg.tar.zst
    fi
 fi
@@ -1046,7 +1046,7 @@ else
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/ksnip-1.8.1-2-aarch64.pkg.tar.zst
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux_based/pi/ksnip-1.8.1-2-aarch64.pkg.tar.zst
      sudo pacman -U ksnip-1.8.1-2-aarch64.pkg.tar.zst
    fi
 fi
@@ -1069,7 +1069,7 @@ else
   echo "You can uninstall it by running this wizard again."
   read -p "Continue? (y/n)]=> " answer 
    if [ $answer = y ] || [ $answer = Y ]; then
-     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/residualvm-0.3.1-4-aarch64.pkg.tar.zst
+     wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux_based/pi/residualvm-0.3.1-4-aarch64.pkg.tar.zst
      sudo pacman -U residualvm-0.3.1-4-aarch64.pkg.tar.zst
    fi
 fi
