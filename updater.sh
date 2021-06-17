@@ -1356,34 +1356,10 @@ menu () {
 while :
   do
 
-
-	echo "   __     __)            __     __)                     
-  (, /|  /|    /)  ,    (, /   /        /)              
-    / | / |   //          /   /  __   _(/ _  _/_  _  __ 
- ) /  |/  |_ /(_  /_...  /   /   /_)_(_(_(_(_(___(/_/ (_
-(_/   '     /) .-/      (___(_.-/     Cli version                  
-           (/ (_/            (_/ 
----------------------------------------------------------"
-echo "1) Upgrade the system. "
-echo "2) Clean unused packages and cache."
-
-
-echo " __                                                 
-|__)_ |_ _|_  _ _   _  _  _|   _  _| _| __  _  _  _ 
-|  (_||_(_| )(-_)  (_|| )(_|  (_|(_|(_|    (_)| )_) 
----------------------------------------------------------       "
-echo "a) Repair the most common problems."
-echo "b) Download wine apps and games."
-echo "c) Pulseaudio/alsa(better sound) switcher."
-echo "d) Add-ons."
-echo ""
-echo -n "[Type an option: 1,2,a,b,c,d and then press INTRO]=> "
-
-
-read opcion
-case $opcion in
-
-1)
+selection=$(zenity --list --height=300 "Upgrade the system." "Clean unused packages and cache." "Repair the most common problems." "Download wine apps and games." "Pulseaudio/alsa switcher." "Add-ons." --column="" --text="Choose one of the following options:" --title="Mfj Updater")
+clear
+case "$selection" in
+"Upgrade the system.")
 
 echo "";
 
@@ -1430,27 +1406,27 @@ else
 fi
 sleep 5;;
 
-2)
+"Clean unused packages and cache.")
 
 echo "
 Attention, please read the following warnings before proceeding:
 " & sudo pacman -Scc && paccache -r && sudo pacman -Rns $(pacman -Qtdq);
 sleep 5;;
 
-a) 
+"Repair the most common problems.") 
 
 patch;;
 
 
-b) 
+"Download wine apps and games.") 
 
 wineapps;;
 
-c)
+"Pulseaudio/alsa switcher.")
 
 audiofix;;
 
-d)
+"Add-ons.")
 
 addapps;;
 
