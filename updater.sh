@@ -1437,8 +1437,8 @@ sleep 3; exit 1;;
 
 *)
 
-echo "$opc invalid option ";
-echo "Press a key to continue.";
+echo "Ok, bye bye.";
+exit 1;
 read foo;;
 
  esac
